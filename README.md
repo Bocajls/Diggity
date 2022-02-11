@@ -1,6 +1,6 @@
 # Diggity
 
-
+```
 TODO
 
 [OK] Fix NAS remote access on router
@@ -15,8 +15,6 @@ Figure out seed algoritm
 REMEMBER TO HAVE A LOT OF SMALL TEST PROJECTS
 DOESNT NEED TO BE PERFECT FIRST TIME!!
 
-
------------- IDEAS ------------
 
 Buildings:
 	Mineral Store (Sell only)
@@ -67,3 +65,4 @@ Blocks:
 		Uranium
 		WingOfDeath
 		WingOfLife
+```
