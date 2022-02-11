@@ -1,0 +1,273 @@
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin/$(Platform)
+/intermediateDir:obj/$(Platform)
+/platform:DesktopGL
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+
+#---------------------------------- Content ---------------------------------#
+
+#begin Graphics/Blocks/M_AirBlock.xnb
+/copy:Graphics/Blocks/M_AirBlock.xnb
+
+#begin Graphics/Blocks/M_AmethystBlock.xnb
+/copy:Graphics/Blocks/M_AmethystBlock.xnb
+
+#begin Graphics/Blocks/M_BlackHoleBlock.xnb
+/copy:Graphics/Blocks/M_BlackHoleBlock.xnb
+
+#begin Graphics/Blocks/M_CopperBlock.xnb
+/copy:Graphics/Blocks/M_CopperBlock.xnb
+
+#begin Graphics/Blocks/M_DiamondBlock.xnb
+/copy:Graphics/Blocks/M_DiamondBlock.xnb
+
+#begin Graphics/Blocks/M_DinosaurBoneBlock.xnb
+/copy:Graphics/Blocks/M_DinosaurBoneBlock.xnb
+
+#begin Graphics/Blocks/M_DirtBlock.xnb
+/copy:Graphics/Blocks/M_DirtBlock.xnb
+
+#begin Graphics/Blocks/M_DirtBlockBackground.xnb
+/copy:Graphics/Blocks/M_DirtBlockBackground.xnb
+
+#begin Graphics/Blocks/M_EmeraldBlock.xnb
+/copy:Graphics/Blocks/M_EmeraldBlock.xnb
+
+#begin Graphics/Blocks/M_GoldBlock.xnb
+/copy:Graphics/Blocks/M_GoldBlock.xnb
+
+#begin Graphics/Blocks/M_GrassBlock.xnb
+/copy:Graphics/Blocks/M_GrassBlock.xnb
+
+#begin Graphics/Blocks/M_IronBlock.xnb
+/copy:Graphics/Blocks/M_IronBlock.xnb
+
+#begin Graphics/Blocks/M_Rainbow.xnb
+/copy:Graphics/Blocks/M_Rainbow.xnb
+
+#begin Graphics/Blocks/M_RubyBlock.xnb
+/copy:Graphics/Blocks/M_RubyBlock.xnb
+
+#begin Graphics/Blocks/M_ShardOfDeathBlock.xnb
+/copy:Graphics/Blocks/M_ShardOfDeathBlock.xnb
+
+#begin Graphics/Blocks/M_ShardOfLifeBlock.xnb
+/copy:Graphics/Blocks/M_ShardOfLifeBlock.xnb
+
+#begin Graphics/Blocks/M_StoneBlock.xnb
+/copy:Graphics/Blocks/M_StoneBlock.xnb
+
+#begin Graphics/Blocks/M_SuperNovaBlock.xnb
+/copy:Graphics/Blocks/M_SuperNovaBlock.xnb
+
+#begin Graphics/Blocks/M_UraniumBlock.xnb
+/copy:Graphics/Blocks/M_UraniumBlock.xnb
+
+#begin Graphics/Blocks/M_WingOfDeathBlock.xnb
+/copy:Graphics/Blocks/M_WingOfDeathBlock.xnb
+
+#begin Graphics/Blocks/M_WingOfLifeBlock.xnb
+/copy:Graphics/Blocks/M_WingOfLifeBlock.xnb
+
+#begin Graphics/Drills/CopperDrill/CopperDrillDown.xnb
+/copy:Graphics/Drills/CopperDrill/CopperDrillDown.xnb
+
+#begin Graphics/Drills/CopperDrill/CopperDrillLeft.xnb
+/copy:Graphics/Drills/CopperDrill/CopperDrillLeft.xnb
+
+#begin Graphics/Drills/CopperDrill/CopperDrillRight.xnb
+/copy:Graphics/Drills/CopperDrill/CopperDrillRight.xnb
+
+#begin Graphics/Drills/CopperDrill/CopperDrillUp.xnb
+/copy:Graphics/Drills/CopperDrill/CopperDrillUp.xnb
+
+#begin Graphics/Drills/CrystalDrill/CrystalDrillDown.xnb
+/copy:Graphics/Drills/CrystalDrill/CrystalDrillDown.xnb
+
+#begin Graphics/Drills/CrystalDrill/CrystalDrillLeft.xnb
+/copy:Graphics/Drills/CrystalDrill/CrystalDrillLeft.xnb
+
+#begin Graphics/Drills/CrystalDrill/CrystalDrillRight.xnb
+/copy:Graphics/Drills/CrystalDrill/CrystalDrillRight.xnb
+
+#begin Graphics/Drills/CrystalDrill/CrystalDrillUp.xnb
+/copy:Graphics/Drills/CrystalDrill/CrystalDrillUp.xnb
+
+#begin Graphics/Drills/DiamondDrill/DiamondDrillDown.xnb
+/copy:Graphics/Drills/DiamondDrill/DiamondDrillDown.xnb
+
+#begin Graphics/Drills/DiamondDrill/DiamondDrillLeft.xnb
+/copy:Graphics/Drills/DiamondDrill/DiamondDrillLeft.xnb
+
+#begin Graphics/Drills/DiamondDrill/DiamondDrillRight.xnb
+/copy:Graphics/Drills/DiamondDrill/DiamondDrillRight.xnb
+
+#begin Graphics/Drills/DiamondDrill/DiamondDrillUp.xnb
+/copy:Graphics/Drills/DiamondDrill/DiamondDrillUp.xnb
+
+#begin Graphics/Drills/DirtDrill/DirtDrillDown.xnb
+/copy:Graphics/Drills/DirtDrill/DirtDrillDown.xnb
+
+#begin Graphics/Drills/DirtDrill/DirtDrillLeft.xnb
+/copy:Graphics/Drills/DirtDrill/DirtDrillLeft.xnb
+
+#begin Graphics/Drills/DirtDrill/DirtDrillRight.xnb
+/copy:Graphics/Drills/DirtDrill/DirtDrillRight.xnb
+
+#begin Graphics/Drills/DirtDrill/DirtDrillUp.xnb
+/copy:Graphics/Drills/DirtDrill/DirtDrillUp.xnb
+
+#begin Graphics/Drills/GoldDrill/GoldDrillDown.xnb
+/copy:Graphics/Drills/GoldDrill/GoldDrillDown.xnb
+
+#begin Graphics/Drills/GoldDrill/GoldDrillLeft.xnb
+/copy:Graphics/Drills/GoldDrill/GoldDrillLeft.xnb
+
+#begin Graphics/Drills/GoldDrill/GoldDrillRight.xnb
+/copy:Graphics/Drills/GoldDrill/GoldDrillRight.xnb
+
+#begin Graphics/Drills/GoldDrill/GoldDrillUp.xnb
+/copy:Graphics/Drills/GoldDrill/GoldDrillUp.xnb
+
+#begin Graphics/Drills/IronDrill/IronDrillDown.xnb
+/copy:Graphics/Drills/IronDrill/IronDrillDown.xnb
+
+#begin Graphics/Drills/IronDrill/IronDrillLeft.xnb
+/copy:Graphics/Drills/IronDrill/IronDrillLeft.xnb
+
+#begin Graphics/Drills/IronDrill/IronDrillRight.xnb
+/copy:Graphics/Drills/IronDrill/IronDrillRight.xnb
+
+#begin Graphics/Drills/IronDrill/IronDrillUp.xnb
+/copy:Graphics/Drills/IronDrill/IronDrillUp.xnb
+
+#begin Graphics/Drills/RadioactiveDrill/RadioactiveDrillDown.xnb
+/copy:Graphics/Drills/RadioactiveDrill/RadioactiveDrillDown.xnb
+
+#begin Graphics/Drills/RadioactiveDrill/RadioactiveDrillLeft.xnb
+/copy:Graphics/Drills/RadioactiveDrill/RadioactiveDrillLeft.xnb
+
+#begin Graphics/Drills/RadioactiveDrill/RadioactiveDrillRight.xnb
+/copy:Graphics/Drills/RadioactiveDrill/RadioactiveDrillRight.xnb
+
+#begin Graphics/Drills/RadioactiveDrill/RadioactiveDrillUp.xnb
+/copy:Graphics/Drills/RadioactiveDrill/RadioactiveDrillUp.xnb
+
+#begin Graphics/Drills/RainbowDrill/RainbowDrillDown.xnb
+/copy:Graphics/Drills/RainbowDrill/RainbowDrillDown.xnb
+
+#begin Graphics/Drills/RainbowDrill/RainbowDrillLeft.xnb
+/copy:Graphics/Drills/RainbowDrill/RainbowDrillLeft.xnb
+
+#begin Graphics/Drills/RainbowDrill/RainbowDrillRight.xnb
+/copy:Graphics/Drills/RainbowDrill/RainbowDrillRight.xnb
+
+#begin Graphics/Drills/RainbowDrill/RainbowDrillUp.xnb
+/copy:Graphics/Drills/RainbowDrill/RainbowDrillUp.xnb
+
+#begin Graphics/Dynamite/DynamiteTierFour.xnb
+/copy:Graphics/Dynamite/DynamiteTierFour.xnb
+
+#begin Graphics/Dynamite/DynamiteTierOne.xnb
+/copy:Graphics/Dynamite/DynamiteTierOne.xnb
+
+#begin Graphics/Dynamite/DynamiteTierThree.xnb
+/copy:Graphics/Dynamite/DynamiteTierThree.xnb
+
+#begin Graphics/Dynamite/DynamiteTierTwo.xnb
+/copy:Graphics/Dynamite/DynamiteTierTwo.xnb
+
+#begin Graphics/General/Breaking.xnb
+/copy:Graphics/General/Breaking.xnb
+
+#begin Graphics/Hulls/CopperHull/M_CopperShip.xnb
+/copy:Graphics/Hulls/CopperHull/M_CopperShip.xnb
+
+#begin Graphics/Hulls/CopperHull/M_CopperShipDown.xnb
+/copy:Graphics/Hulls/CopperHull/M_CopperShipDown.xnb
+
+#begin Graphics/Hulls/CrystalHull/M_CrystalShip.xnb
+/copy:Graphics/Hulls/CrystalHull/M_CrystalShip.xnb
+
+#begin Graphics/Hulls/CrystalHull/M_CrystalShipDown.xnb
+/copy:Graphics/Hulls/CrystalHull/M_CrystalShipDown.xnb
+
+#begin Graphics/Hulls/DiamondHull/M_DiamondShip.xnb
+/copy:Graphics/Hulls/DiamondHull/M_DiamondShip.xnb
+
+#begin Graphics/Hulls/DiamondHull/M_DiamondShipDown.xnb
+/copy:Graphics/Hulls/DiamondHull/M_DiamondShipDown.xnb
+
+#begin Graphics/Hulls/GoldHull/M_GoldShip.xnb
+/copy:Graphics/Hulls/GoldHull/M_GoldShip.xnb
+
+#begin Graphics/Hulls/GoldHull/M_GoldShipDown.xnb
+/copy:Graphics/Hulls/GoldHull/M_GoldShipDown.xnb
+
+#begin Graphics/Hulls/IronHull/M_IronShip.xnb
+/copy:Graphics/Hulls/IronHull/M_IronShip.xnb
+
+#begin Graphics/Hulls/IronHull/M_IronShipDown.xnb
+/copy:Graphics/Hulls/IronHull/M_IronShipDown.xnb
+
+#begin Graphics/Hulls/RadioactiveHull/M_RadioactiveShip.xnb
+/copy:Graphics/Hulls/RadioactiveHull/M_RadioactiveShip.xnb
+
+#begin Graphics/Hulls/RadioactiveHull/M_RadioactiveShipDown.xnb
+/copy:Graphics/Hulls/RadioactiveHull/M_RadioactiveShipDown.xnb
+
+#begin Graphics/Hulls/RainbowHull/M_RainbowShip.xnb
+/copy:Graphics/Hulls/RainbowHull/M_RainbowShip.xnb
+
+#begin Graphics/Hulls/RainbowHull/M_RainbowShipDown.xnb
+/copy:Graphics/Hulls/RainbowHull/M_RainbowShipDown.xnb
+
+#begin Graphics/Hulls/ScrapHull/PlayerDown.xnb
+/copy:Graphics/Hulls/ScrapHull/PlayerDown.xnb
+
+#begin Graphics/Hulls/ScrapHull/PlayerLeft.xnb
+/copy:Graphics/Hulls/ScrapHull/PlayerLeft.xnb
+
+#begin Graphics/Hulls/ScrapHull/PlayerRight.xnb
+/copy:Graphics/Hulls/ScrapHull/PlayerRight.xnb
+
+#begin Graphics/Hulls/ScrapHull/PlayerUp.xnb
+/copy:Graphics/Hulls/ScrapHull/PlayerUp.xnb
+
+#begin Graphics/M_BaseShip.xnb
+/copy:Graphics/M_BaseShip.xnb
+
+#begin Graphics/M_Player.xnb
+/copy:Graphics/M_Player.xnb
+
+#begin Graphics/M_PlayerDown.xnb
+/copy:Graphics/M_PlayerDown.xnb
+
+#begin Graphics/M_PlayerLeft.xnb
+/copy:Graphics/M_PlayerLeft.xnb
+
+#begin Graphics/M_PlayerRight.xnb
+/copy:Graphics/M_PlayerRight.xnb
+
+#begin Graphics/M_PlayerUp.xnb
+/copy:Graphics/M_PlayerUp.xnb
+
+#begin Sounds/DestroyedBlock.xnb
+/copy:Sounds/DestroyedBlock.xnb
+
+#begin Sounds/DrillingSoundEffect.xnb
+/copy:Sounds/DrillingSoundEffect.xnb
+
+#begin Sounds/DynamiteExplodingSoundEffect.xnb
+/copy:Sounds/DynamiteExplodingSoundEffect.xnb
+
+#begin Sounds/Kaching.xnb
+/copy:Sounds/Kaching.xnb
+
