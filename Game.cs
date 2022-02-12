@@ -9,7 +9,10 @@ namespace Diggidy
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private SpriteRepository _sprites;
+        
+        private WorldElementsRepository _blocks;
+
+        // private ItemSpriteRepository _items;
 
         public Game()
         {
@@ -33,7 +36,7 @@ namespace Diggidy
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _sprites = new SpriteRepository(Content);
+            _blocks = new WorldElementsRepository(Content);
 
             // TODO: Add your content loading here
         
@@ -59,7 +62,7 @@ namespace Diggidy
             
             _spriteBatch.Begin();
 
-            _spriteBatch.Draw(_sprites[0].Texture, new Vector2(0,0), Color.White); /* DELETE AGAIN - Example of drawing AirBlock */
+            _spriteBatch.Draw(_blocks[0].Texture, new Vector2(0,0), Color.White); /* DELETE AGAIN - Example of drawing AirBlock */
 
             _spriteBatch.End();
 

@@ -1,6 +1,6 @@
 ﻿namespace Diggidy.Models.Abstract
 {
-    public interface IBlock : IType
+    public interface IBlock
     {
         public float Hardness { get; set; }
         public float Health { get; set; }
