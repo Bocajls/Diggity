@@ -1,4 +1,4 @@
-﻿using Diggity.Models.Abstract.PlayerShipComponents;
+﻿using Diggity.Project.Models.Abstract.PlayerShipComponents;
 
 namespace Diggity.Project.Models.Concrete.PlayerShipComponents
 {

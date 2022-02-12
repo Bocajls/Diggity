@@ -1,4 +1,4 @@
-﻿using Diggity.Models.Abstract;
+﻿using Diggity.Project.Models.Abstract;
 using Diggity.Project.Models.Concrete.Blocks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;

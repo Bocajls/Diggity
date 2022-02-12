@@ -1,4 +1,4 @@
-﻿namespace Diggity.Models.Abstract.PlayerShipComponents
+﻿namespace Diggity.Project.Models.Abstract.PlayerShipComponents
 {
     public interface IHull : IType
     {

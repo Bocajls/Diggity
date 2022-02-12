@@ -1,4 +1,4 @@
-﻿namespace Diggity.Models.Abstract
+﻿namespace Diggity.Project.Models.Abstract
 {
     public interface IGame
     {

@@ -1,7 +1,7 @@
 ﻿using Diggity.Project.Models.Abstract.Buildings;
 using System.Collections.Generic;
 
-namespace Diggity.Models.Abstract
+namespace Diggity.Project.Models.Abstract
 {
     public interface IWorld
     {

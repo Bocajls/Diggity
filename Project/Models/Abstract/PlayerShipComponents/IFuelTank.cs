@@ -1,9 +1,8 @@
-﻿using Diggity.Models.Abstract;
-
-namespace Diggity.Project.Models.Abstract.PlayerShipComponents
+﻿namespace Diggity.Project.Models.Abstract.PlayerShipComponents
 {
-    interface IFuelTank : IType
+    public interface IFuelTank : IType
     {
+        public float Fuel { get; set; }
         public float Capacity { get; set; }
     }
 }

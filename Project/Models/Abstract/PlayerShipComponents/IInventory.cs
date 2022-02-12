@@ -1,6 +1,6 @@
 ﻿using Diggity.Project.Models.Abstract.Grids;
 
-namespace Diggity.Models.Abstract.PlayerShipComponents
+namespace Diggity.Project.Models.Abstract.PlayerShipComponents
 {
     public interface IInventory : IType
     {

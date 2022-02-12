@@ -25,10 +25,10 @@ namespace Diggity
 
         protected override void Initialize()
         {
-            int _worldWidth = 2000; /* DELETE AGAIN - Example of world width */
-            int _worldHeight = 500000;  /* DELETE AGAIN - Example of world height */
-            var World = new byte[_worldWidth, _worldHeight];  /* DELETE AGAIN - Example of world */
-            var Trail = new bool[_worldWidth, _worldHeight];  /* DELETE AGAIN - Example of trail */
+            // int _worldWidth = 2000; /* DELETE AGAIN - Example of world width */
+            // int _worldHeight = 500000;  /* DELETE AGAIN - Example of world height */
+            // var World = new byte[_worldWidth, _worldHeight];  /* DELETE AGAIN - Example of world */
+            // var Trail = new bool[_worldWidth, _worldHeight];  /* DELETE AGAIN - Example of trail */
 
             // TODO: Add your initialization logic here
 

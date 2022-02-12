@@ -1,6 +1,4 @@
-﻿using Diggity.Models.Abstract;
-
-namespace Diggity.Project.Models.Abstract.Grids
+﻿namespace Diggity.Project.Models.Abstract.Grids
 {
     public interface IGridBox
     {

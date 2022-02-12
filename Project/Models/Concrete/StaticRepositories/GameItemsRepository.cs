@@ -1,5 +1,4 @@
-﻿using Diggity.Models.Abstract;
-using Diggity.Project.Models.Concrete.PlayerShipComponents;
+﻿using Diggity.Project.Models.Abstract;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;

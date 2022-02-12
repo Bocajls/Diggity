@@ -1,5 +1,4 @@
-﻿using Diggity.Models.Abstract;
-using Diggity.Models.Abstract.PlayerShipComponents;
+﻿using Diggity.Project.Models.Abstract.PlayerShipComponents;
 using Diggity.Project.Models.Abstract.Grids;
 
 namespace Diggity.Project.Models.Concrete.PlayerShipComponents

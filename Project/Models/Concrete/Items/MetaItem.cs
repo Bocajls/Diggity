@@ -1,4 +1,4 @@
-﻿using Diggity.Models.Abstract;
+﻿using Diggity.Project.Models.Abstract;
 
 namespace Diggity.Project.Models.Items.Concrete
 {
