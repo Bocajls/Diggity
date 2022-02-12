@@ -1,12 +1,8 @@
 ﻿using Diggity.Project.Concrete.StaticRepositories;
-using Diggity.Project.Context;
-using Diggity.Project.Context.ContextPrimitiveObjects;
-using Diggity.Project.Models.Concrete.PlayerShipInventory;
 using Diggity.Project.Models.Concrete.StaticRepositories;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Newtonsoft.Json;
 
 namespace Diggity
 {

@@ -16,7 +16,28 @@ REMEMBER TO HAVE A LOT OF SMALL TEST PROJECTS
 DOESNT NEED TO BE PERFECT FIRST TIME!!
 
 
+Figure out Crafting Recipes.
+3 * 3 grid of items or raw materials (?)
+Smeltery for ores into ingots (?)
+
+Other ideas
+	Crafting Recipes (
+		[IType,IType,IType]
+		[IType,IType,IType]
+		[IType,IType,IType]
+	)
+
+	Smeltery ([ore],[ore],[ore]) for ores into ingots.
+	Multiple ores smelted into new special ingots.
+	Ingots and minerals into components for ship.
+	^ Important its made modularly to easily add new recipes and ingots.
+
+	Being able to drag items from inventory into building slots and Storage-building.
+	When moving away from buildings, the items must stay in the building, but building-window must close!
+	^ Items placed in buildings must be saved! - otherwise they will disappear when game is reopened or when player moves away.
+
 Buildings:
+	Smeltery (maybe)
 	Mineral Store (Sell only)
 	Storage
 	Crafting Station
