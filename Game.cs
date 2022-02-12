@@ -1,4 +1,5 @@
 ﻿using Diggity.Project.Concrete.Utilities;
+using Diggity.Project.Models.Concrete;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -9,7 +10,8 @@ namespace Diggidy
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        
+
+        private WorldInteractionsRepository _interactions;
         private WorldElementsRepository _blocks;
 
         // private ItemSpriteRepository _items;
@@ -29,7 +31,7 @@ namespace Diggidy
             var Trail = new bool[_worldWidth, _worldHeight];  /* DELETE AGAIN - Example of trail */
 
             // TODO: Add your initialization logic here
-
+            
             base.Initialize();
         }
 
@@ -37,9 +39,10 @@ namespace Diggidy
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _blocks = new WorldElementsRepository(Content);
+            _interactions = new WorldInteractionsRepository();
 
             // TODO: Add your content loading here
-        
+
         }
 
         protected override void Update(GameTime gameTime)
