@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Diggity.Project.Models.Concrete.StaticRepositories
 {
-    class GameItemsRepository : Dictionary<int, (string Name, Texture2D Texture, IType type)>
+    public class GameItemsRepository : Dictionary<int, (string Name, Texture2D Texture, IType type)>
     {
         public GameItemsRepository(ContentManager manager)
         {

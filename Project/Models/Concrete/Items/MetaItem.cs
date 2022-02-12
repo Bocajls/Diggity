@@ -2,7 +2,7 @@
 
 namespace Diggity.Project.Models.Items.Concrete
 {
-    abstract class MetaItem : IType
+    public abstract class MetaItem : IType
     {
         public short ID { get; set; }
         public string Name { get; set; }

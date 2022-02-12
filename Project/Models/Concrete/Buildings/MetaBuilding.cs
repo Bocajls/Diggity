@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace Diggity.Project.Models.Concrete.Buildings
 {
-    class MetaBuilding : IBuilding
+    public abstract class MetaBuilding : IBuilding
     {
         public int ID { get; set; }
         public string StoreName { get; set; }

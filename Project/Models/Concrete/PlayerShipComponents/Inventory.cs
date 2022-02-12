@@ -3,7 +3,7 @@ using Diggity.Project.Models.Abstract.Grids;
 
 namespace Diggity.Project.Models.Concrete.PlayerShipComponents
 {
-    class Inventory : IInventory
+    public class Inventory : IInventory
     {
         public Inventory()
         {

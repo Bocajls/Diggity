@@ -16,7 +16,7 @@ namespace Diggity.Project.Concrete.StaticRepositories
         private void InitializeCollection(ContentManager manager)
         {
             // Limitation of 0-255 world block types
-            Add(0, ("Air", manager.Load<Texture2D>("Graphics/Blocks/M_AirBlock"), new MetaBlock(Ethereal:true)));
+            Add(0, ("Air", manager.Load<Texture2D>("Graphics/Blocks/M_AirBlock"), new Block(Ethereal:true)));
         }
     }
 }

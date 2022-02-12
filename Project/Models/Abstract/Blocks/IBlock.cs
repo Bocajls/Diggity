@@ -1,4 +1,4 @@
-﻿namespace Diggity.Project.Models.Abstract
+﻿namespace Diggity.Project.Models.Abstract.Blocks
 {
     public interface IBlock
     {

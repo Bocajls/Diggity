@@ -8,6 +8,10 @@ namespace Diggity
 {
     public class Game : Microsoft.Xna.Framework.Game
     {
+        private static readonly string Version = "";
+        private static readonly int Pixels = 64; 
+
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private WorldInteractionsRepository _interactions;

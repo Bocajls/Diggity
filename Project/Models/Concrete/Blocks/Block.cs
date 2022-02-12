@@ -3,10 +3,10 @@ using System;
 
 namespace Diggity.Project.Models.Concrete.Blocks
 {
-    public class MetaBlock : IBlock
+    public class Block : IBlock
     {
         public event EventHandler OnBlockDestroyed;
-        public MetaBlock(bool Ethereal = false, float Hardness = 0, float Health = 0, double Worth = 0)
+        public Block(bool Ethereal = false, float Hardness = 0, float Health = 0, double Worth = 0)
         {
             this.Ethereal = Ethereal;
             this.Hardness = Hardness;

@@ -2,7 +2,7 @@
 
 namespace Diggity.Project.Models.Concrete.PlayerShipComponents
 {
-    class Drill : IDrill
+    public class Drill : IDrill
     {
         public Drill(short ID, float Hardness, IThermalPlating Plating, string Name)
         {

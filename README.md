@@ -16,9 +16,8 @@ REMEMBER TO HAVE A LOT OF SMALL TEST PROJECTS
 DOESNT NEED TO BE PERFECT FIRST TIME!!
 
 
-Figure out Crafting Recipes.
-3 * 3 grid of items or raw materials (?)
-Smeltery for ores into ingots (?)
+FIGURE OUT SCHEDULER!
+	Lots of events that need scheduleing, for example smelting ores, player mining, player movement, statistics, thermal dissipation, crafting.
 
 Other ideas
 	Crafting Recipes (

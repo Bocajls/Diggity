@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Diggity.Project.Models.Concrete.StaticRepositories
 {
-    class WorldInteractionsRepository : Dictionary<(int X, int Y), MetaBlock>
+    public class WorldInteractionsRepository : Dictionary<(int X, int Y), Block>
     {
         public WorldInteractionsRepository()
         {

@@ -2,7 +2,8 @@
 {
     public interface IHull : IType
     {
-        public float Durability { get; set; } // Health of the ship
+        public float Health { get; set; }
+        public float Durability { get; set; } // Maximum health of the ship
         public IThermalPlating Plating { get; set; } // Heat dissipating plating
     }
 }
