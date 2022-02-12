@@ -1,5 +1,5 @@
-﻿using Diggity.Project.Concrete.Utilities;
-using Diggity.Project.Models.Concrete;
+﻿using Diggity.Project.Concrete.StaticRepositories;
+using Diggity.Project.Models.Concrete.StaticRepositories;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,6 +13,8 @@ namespace Diggidy
 
         private WorldInteractionsRepository _interactions;
         private WorldElementsRepository _blocks;
+
+        private GameItemsRepository _items; 
 
         // private ItemSpriteRepository _items;
 

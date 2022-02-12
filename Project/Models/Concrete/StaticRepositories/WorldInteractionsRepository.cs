@@ -1,7 +1,7 @@
 ﻿using Diggity.Project.Models.Concrete.Blocks;
 using System.Collections.Generic;
 
-namespace Diggity.Project.Models.Concrete
+namespace Diggity.Project.Models.Concrete.StaticRepositories
 {
     class WorldInteractionsRepository : Dictionary<(int X, int Y), MetaBlock>
     {

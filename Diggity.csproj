@@ -11,8 +11,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Content\General\**" />
+    <Compile Remove="Project\Context\**" />
     <EmbeddedResource Remove="Content\General\**" />
+    <EmbeddedResource Remove="Project\Context\**" />
     <None Remove="Content\General\**" />
+    <None Remove="Project\Context\**" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -35,9 +38,5 @@
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Project\Context\" />
-    <Folder Include="Project\Utilities\" />
   </ItemGroup>
 </Project>

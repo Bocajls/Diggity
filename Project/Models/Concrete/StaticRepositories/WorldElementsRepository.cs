@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace Diggity.Project.Concrete.Utilities
+namespace Diggity.Project.Concrete.StaticRepositories
 {
     public class WorldElementsRepository : Dictionary<int, (string Name, Texture2D Texture, IBlock block)>
     {

@@ -1,7 +1,9 @@
-﻿namespace Diggidy.Models.Abstract.PlayerShipInventory
+﻿using System.Collections.Generic;
+
+namespace Diggidy.Models.Abstract.PlayerShipInventory
 {
     public interface IInventory
     {
-        public IType[,] Items { get; set; }
+        public IList<IType>[,] Items { get; set; }
     }
 }
