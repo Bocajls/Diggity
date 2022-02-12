@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Diggity.Project.Concrete.Utilities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
 
 namespace Diggidy
 {
@@ -9,12 +9,11 @@ namespace Diggidy
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private Dictionary<int, (string Name, Texture2D Texture)> _sprites;
+        private SpriteRepository _sprites;
 
         public Game()
         {
             _graphics = new GraphicsDeviceManager(this);
-            _sprites = new Dictionary<int, (string Name, Texture2D Texture)>();
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -34,10 +33,10 @@ namespace Diggidy
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _sprites = new SpriteRepository(Content);
 
             // TODO: Add your content loading here
-
-            _sprites.Add(0, ("Air", Content.Load<Texture2D>("Graphics/Blocks/M_AirBlock")));
+        
         }
 
         protected override void Update(GameTime gameTime)
