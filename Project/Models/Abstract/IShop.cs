@@ -1,4 +1,4 @@
-﻿namespace Diggidy.Models.Abstract
+﻿namespace Diggity.Models.Abstract
 {
     public interface IShop
     {

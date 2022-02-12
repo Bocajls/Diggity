@@ -1,19 +1,21 @@
 ﻿using Diggity.Project.Concrete.StaticRepositories;
+using Diggity.Project.Context;
+using Diggity.Project.Context.ContextPrimitiveObjects;
+using Diggity.Project.Models.Concrete.PlayerShipInventory;
 using Diggity.Project.Models.Concrete.StaticRepositories;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Newtonsoft.Json;
 
-namespace Diggidy
+namespace Diggity
 {
     public class Game : Microsoft.Xna.Framework.Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
         private WorldInteractionsRepository _interactions;
         private WorldElementsRepository _blocks;
-
         private GameItemsRepository _items; 
 
         // private ItemSpriteRepository _items;
@@ -33,7 +35,7 @@ namespace Diggidy
             var Trail = new bool[_worldWidth, _worldHeight];  /* DELETE AGAIN - Example of trail */
 
             // TODO: Add your initialization logic here
-            
+
             base.Initialize();
         }
 

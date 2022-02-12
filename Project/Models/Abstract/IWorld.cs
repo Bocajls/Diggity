@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Diggidy.Models.Abstract
+namespace Diggity.Models.Abstract
 {
     public interface IWorld
     {

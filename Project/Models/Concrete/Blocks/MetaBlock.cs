@@ -1,4 +1,4 @@
-﻿using Diggidy.Models.Abstract;
+﻿using Diggity.Models.Abstract;
 using System;
 
 namespace Diggity.Project.Models.Concrete.Blocks

@@ -1,4 +1,4 @@
-﻿namespace Diggidy.Models.Abstract.PlayerShipComponents
+﻿namespace Diggity.Models.Abstract.PlayerShipComponents
 {
     public interface IThermalPlating : IType
     {

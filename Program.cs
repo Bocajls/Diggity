@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Diggidy
+namespace Diggity
 {
     public static class Program
     {

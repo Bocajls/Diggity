@@ -11,11 +11,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Content\General\**" />
-    <Compile Remove="Project\Context\**" />
     <EmbeddedResource Remove="Content\General\**" />
-    <EmbeddedResource Remove="Project\Context\**" />
     <None Remove="Content\General\**" />
-    <None Remove="Project\Context\**" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -32,9 +29,6 @@
     <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.22" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.22" />
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

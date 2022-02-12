@@ -1,8 +1,8 @@
-﻿using Diggidy.Models.Abstract.PlayerShipComponents;
-using Diggidy.Models.Abstract.PlayerShipInventory;
+﻿using Diggity.Models.Abstract.PlayerShipComponents;
+using Diggity.Models.Abstract.PlayerShipInventory;
 using System.Collections.Generic;
 
-namespace Diggidy.Models.Abstract
+namespace Diggity.Models.Abstract
 {
     public interface IPlayer
     {

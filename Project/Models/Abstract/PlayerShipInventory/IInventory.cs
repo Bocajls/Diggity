@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Diggidy.Models.Abstract.PlayerShipInventory
+namespace Diggity.Models.Abstract.PlayerShipInventory
 {
     public interface IInventory
     {
