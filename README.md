@@ -18,6 +18,7 @@ DOESNT NEED TO BE PERFECT FIRST TIME!!
 
 FIGURE OUT SCHEDULER!
 	Lots of events that need scheduleing, for example smelting ores, player mining, player movement, statistics, thermal dissipation, crafting.
+	Automatic saving!
 
 
 FIGURE OUT .JSON-FORMATTING
