@@ -19,6 +19,12 @@ DOESNT NEED TO BE PERFECT FIRST TIME!!
 FIGURE OUT SCHEDULER!
 	Lots of events that need scheduleing, for example smelting ores, player mining, player movement, statistics, thermal dissipation, crafting.
 
+
+FIGURE OUT .JSON-FORMATTING
+	Lots of interfaces and some abstract classes!
+	These need to be saved, maybe too many interfaces .. ?!
+
+
 Other ideas
 	Crafting Recipes (
 		[IType,IType,IType]
