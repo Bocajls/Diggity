@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace Diggity.Project.Models.Concrete.Buttons
 {
-    public abstract class MetaButton : IButton
+    public class Button : IButton
     {
         public int ID { get; set; }
         public Vector2 InternalCoordinate { get; set; }

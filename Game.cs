@@ -8,9 +8,9 @@ namespace Diggity
 {
     public class Game : Microsoft.Xna.Framework.Game
     {
-        private static readonly string Version = "";
+        private static readonly string GameTitle = "Diggity";
+        private static readonly string GameVersion = "V0.02";
         private static readonly int Pixels = 64; 
-
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -29,6 +29,13 @@ namespace Diggity
 
         protected override void Initialize()
         {
+            Window.Title = $"{GameTitle} {GameVersion}";
+
+            _graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
+            _graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
+            _graphics.IsFullScreen = true;
+            _graphics.ApplyChanges();
+
             // int _worldWidth = 2000; /* DELETE AGAIN - Example of world width */
             // int _worldHeight = 500000;  /* DELETE AGAIN - Example of world height */
             // var World = new byte[_worldWidth, _worldHeight];  /* DELETE AGAIN - Example of world */

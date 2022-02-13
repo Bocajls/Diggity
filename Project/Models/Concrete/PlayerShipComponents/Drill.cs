@@ -10,11 +10,15 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
             this.Hardness = Hardness;
             this.Plating = Plating;
             this.Name = Name;
+            this.Worth = Worth;
+            this.Weight = Weight;
         }
 
         public short ID { get; set; }
         public float Hardness { get; set; }
         public IThermalPlating Plating { get; set; }
         public string Name { get; set; }
+        public float Worth { get; set; }
+        public float Weight { get; set; }
     }
 }

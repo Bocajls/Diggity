@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace Diggity.Project.Models.Concrete.Grids
 {
-    public abstract class MetaGrid : IGrid
+    public class Grid : IGrid
     {
         public int ID { get; set; }
         public Vector2 InternalCoordinate { get; set; }

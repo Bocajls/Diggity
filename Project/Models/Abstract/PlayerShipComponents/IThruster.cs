@@ -1,4 +1,6 @@
-﻿namespace Diggity.Project.Models.Abstract.PlayerShipComponents
+﻿using Diggity.Project.Models.Abstract.Types;
+
+namespace Diggity.Project.Models.Abstract.PlayerShipComponents
 {
     public interface IThruster : IType
     {
