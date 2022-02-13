@@ -23,6 +23,7 @@ FIGURE OUT SCHEDULER!
 FIGURE OUT .JSON-FORMATTING
 	Lots of interfaces and some abstract classes!
 	These need to be saved, maybe too many interfaces .. ?!
+		SEED, TRAILS, GRIDS, INVENTORY, PLAYER, STATISTICS
 
 
 Other ideas
