@@ -4,6 +4,16 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
 {
     public class FuelTank : AFuelTank
     {
+        public FuelTank(FuelTank original)
+        {
+            this.ID = original.ID;
+            this.Capacity = original.Capacity;
+            this.Fuel = original.Fuel;
+            this.Name = original.Name;
+            this.Worth = original.Worth;
+            this.Weight = original.Weight;
+        }
+
         public FuelTank(short ID, float Capacity, float Fuel, string Name, float Worth, float Weight)
         {
             this.ID = ID;

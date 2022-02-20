@@ -1,5 +1,4 @@
 ﻿using Diggity.Project.Concrete.StaticRepositories;
-using Diggity.Project.Models.Abstract.Blocks;
 using Diggity.Project.Models.Concrete;
 using Diggity.Project.Models.Concrete.Blocks;
 using Diggity.Project.Models.Concrete.PlayerShipComponents;
@@ -59,30 +58,35 @@ namespace Diggity
             var player = new Player()
             {
                 Cash = 0,
-                Drill = _items[2].type as Drill,
+                Drill = new Drill(_items[2].type as Drill),
                 Engine = null,
                 FuelTank = null,
-                Hull = _items[1].type as Hull,
+                Hull = new Hull(_items[1].type as Hull),
                 Inventory = null,
                 Thruster = null,
                 Direction = new Vector2(0, 0),
                 Coordinates = new Vector2((float)Math.Floor(_blocksWide / 2.0d), (float)Math.Floor(_blocksHigh / 2.0d))
             };
 
+            var createdWorldRender = new Dictionary<Vector2, Vector2>();
+            for (var x = 0; x <= _blocksWide; x++)
+            {
+                for (var y = 0; y <= _blocksHigh; y++)
+                {
+                    createdWorldRender.Add(new Vector2(x, y), new Vector2(x, y));
+                }
+            }
+
             _world = new World(
                 Player: player,                                  // ContextHandler.LoadPlayer();
                 Buildings: null,                                 // ContextHandler.LoadBuildings();
                 BlocksWide: _blocksWide,                         // Calculated
                 BlocksHigh: _blocksHigh,                         // Calculated
-                WorldRender: new Dictionary<Vector2, Vector2>(), // Dynamically generated
+                WorldRender: createdWorldRender,                 // Dynamically updated
                 WorldTrails: new Dictionary<Vector2, bool>()     // ContextHandler.LoadWorldTrails();
             );
 
-            /* START OF DUMMY CODE */
-            for (var x = 0; x <= _world.BlocksWide; x++)
-                for (var y = 0; y <= _world.BlocksHigh; y++)
-                    _world.WorldRender.Add(new Vector2(x, y), new Vector2(x, y));
-            /* END OF DUMMY CODE */
+
 
             // TODO: Add your initialization logic here
 

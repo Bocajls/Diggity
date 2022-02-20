@@ -5,6 +5,16 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
 {
     public class Inventory : AInventory
     {
+/*        public Inventory(Inventory original)
+        {
+            this.ID = original.ID;
+            this.Items = original.Items;
+            this.SizeLimit = original.SizeLimit;
+            this.Name = original.Name;
+            this.Worth = original.Worth;
+            this.Weight = original.Weight;
+        }
+*/
         public Inventory(short ID, Grid Items, float SizeLimit, string Name, float Worth, float Weight)
         {
             this.ID = ID;
