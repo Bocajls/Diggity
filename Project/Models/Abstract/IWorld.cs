@@ -1,4 +1,5 @@
 ﻿using Diggity.Project.Models.Abstract.Buildings;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace Diggity.Project.Models.Abstract
@@ -10,7 +11,7 @@ namespace Diggity.Project.Models.Abstract
         public int BlocksWide { get; set; }
         public int BlocksHigh { get; set; }
 
-        public byte[,] WorldBlocks { get; set; } // 0-255 (ID)
-        public bool[,] WorldTrails { get; set; } // True of False (Destroyed)
+        public Dictionary<Vector2, Vector2> WorldRender { get; set; }
+        public Dictionary<Vector2, bool> WorldTrails { get; set; }
     }
 }

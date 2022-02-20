@@ -1,11 +1,11 @@
 ﻿using Diggity.Project.Models.Abstract.PlayerShipComponents;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 
 namespace Diggity.Project.Models.Abstract
 {
     public interface IPlayer
     {
-        public Vector2 Coordinate { get; set; }
+        public Vector2 Coordinates { get; set; }
         public Vector2 Velocity { get; set; }
         public string Name { get; set; }
         public double Cash { get; set; }
@@ -15,6 +15,6 @@ namespace Diggity.Project.Models.Abstract
         public IInventory Inventory { get; set; }
         public IThruster Thruster { get; set; }
         public IFuelTank FuelTank { get; set; }
-        public float Weight { get; set; }
+        public float Weight { get; }
     }
 }

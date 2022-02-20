@@ -1,6 +1,6 @@
 ﻿using Diggity.Project.Models.Abstract;
 using Diggity.Project.Models.Abstract.Buttons;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 
 namespace Diggity.Project.Models.Concrete.Buttons
 {

@@ -1,9 +1,10 @@
 ﻿using Diggity.Project.Models.Concrete.Blocks;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace Diggity.Project.Models.Concrete.StaticRepositories
 {
-    public class WorldInteractionsRepository : Dictionary<(int X, int Y), Block>
+    public class WorldInteractionsRepository : Dictionary<Vector2, Block>
     {
         public WorldInteractionsRepository()
         {

@@ -1,5 +1,5 @@
 ﻿using Diggity.Project.Models.Abstract.Grids;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 
 namespace Diggity.Project.Models.Abstract.Buildings
 {

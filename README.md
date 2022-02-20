@@ -21,6 +21,13 @@ FIGURE OUT SCHEDULER!
 	Automatic saving!
 
 
+CONSIDER
+	A 'World' of bytes is NOT really needed.
+	The world will be generated through SimplexNoise,
+	instead have (example) a 40 times 23 blocks 'screen' area,
+	only containing what needs to be rendered (besides buildings, those are static)
+
+
 FIGURE OUT .JSON-FORMATTING
 	Lots of interfaces and some abstract classes!
 	These need to be saved, maybe too many interfaces .. ?!
