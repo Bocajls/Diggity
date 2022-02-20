@@ -2,7 +2,7 @@
 
 namespace Diggity.Project.Models.Concrete.PlayerShipComponents
 {
-    public class ThermalPlating : IThermalPlating
+    public class ThermalPlating : AThermalPlating
     {
         public ThermalPlating(short ID, float Thermals, float MaxThermals, float ThermalDissipation, string Name, float Worth, float Weight)
         {
@@ -14,13 +14,5 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
             this.Worth = Worth;
             this.Weight = Weight;
         }
-
-        public short ID { get; set; }
-        public float Thermals { get; set; }
-        public float MaxThermals { get; set; }
-        public float ThermalDissipation { get; set; }
-        public string Name { get; set; }
-        public float Worth { get; set; }
-        public float Weight { get; set; }
     }
 }

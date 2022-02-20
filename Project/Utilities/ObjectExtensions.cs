@@ -1,5 +1,7 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace Diggity.Project.Utilities
@@ -22,6 +24,15 @@ namespace Diggity.Project.Utilities
             serializer.Serialize(ms, obj);
             ms.Seek(0, SeekOrigin.Begin);
             return (T)serializer.Deserialize(ms);
+        }
+
+        public static object DeepCopyJson(object o)
+        {
+            JsonSerializerOptions jsonOptions;
+            jsonOptions = new JsonSerializerOptions();
+            jsonOptions.Converters.Add(new JsonStringEnumConverter());
+            var json = JsonSerializer.Serialize(o, jsonOptions);
+            return JsonSerializer.Deserialize(json, o.GetType(), jsonOptions);
         }
     }
 }

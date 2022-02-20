@@ -2,9 +2,9 @@
 
 namespace Diggity.Project.Models.Concrete.PlayerShipComponents
 {
-    public class Hull : IHull
+    public class Hull : AHull
     {
-        public Hull(short ID, float Durability, float Health, IThermalPlating Plating, string Name, float Worth, float Weight)
+        public Hull(short ID, float Durability, float Health, ThermalPlating Plating, string Name, float Worth, float Weight)
         {
             this.ID = ID;
             this.Durability = Durability;
@@ -14,13 +14,5 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
             this.Worth = Worth;
             this.Weight = Weight;
         }
-
-        public short ID { get; set; }
-        public float Durability { get; set; }
-        public float Health { get; set; }
-        public IThermalPlating Plating { get; set; }
-        public string Name { get; set; }
-        public float Worth { get; set; }
-        public float Weight { get; set; }
     }
 }

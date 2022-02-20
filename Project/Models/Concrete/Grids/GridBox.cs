@@ -4,9 +4,12 @@ using System.Collections.Generic;
 
 namespace Diggity.Project.Models.Concrete.Grids
 {
-    public class GridBox : IGridBox
+    public class GridBox : AGridBox
     {
-        public int ID { get; set; }
-        public IList<IType> Item { get; set; }
+        public GridBox(int ID, List<AType> Item)
+        {
+            this.ID = ID;
+            this.Item = Item;
+        }
     }
 }

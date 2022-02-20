@@ -2,10 +2,10 @@
 
 namespace Diggity.Project.Models.Abstract.Buttons
 {
-    public interface IButton
+    public abstract class AButton
     {
         public int ID { get; set; }
         public Vector2 InternalCoordinate { get; set; }
-        public ISize Size { get; set; } // Size in pixels
+        public ASize Size { get; set; } // Size in pixels
     }
 }

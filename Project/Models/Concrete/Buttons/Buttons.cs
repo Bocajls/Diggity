@@ -5,6 +5,6 @@ namespace Diggity.Project.Models.Concrete.Buttons
 {
     public class Buttons
     {
-        public IList<IButton> ButtonCollection { get; set; }
+        public List<AButton> ButtonCollection { get; set; }
     }
 }

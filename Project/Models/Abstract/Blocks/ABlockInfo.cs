@@ -1,8 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace Diggity.Project.Models.Abstract.Blocks
 {
-    public interface IBlockInfo
+    public abstract class ABlockInfo
     {
         public int MinimumDepth { get; set; }
         public int MaximumDepth { get; set; }

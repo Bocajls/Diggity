@@ -1,6 +1,6 @@
 ﻿namespace Diggity.Project.Models.Abstract.Statistics
 {
-    public interface IStatistics
+    public abstract class AStatistics
     {
         public int TotalSecondsPlayed { get; set; }
         public int TotalBlocksMined { get; set; }

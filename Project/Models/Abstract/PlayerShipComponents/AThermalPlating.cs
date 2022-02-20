@@ -2,7 +2,7 @@
 
 namespace Diggity.Project.Models.Abstract.PlayerShipComponents
 {
-    public interface IThermalPlating : IType
+    public abstract class AThermalPlating : AType
     {
         public float Thermals { get; set; }
         public float MaxThermals { get; set; } // Maximum temperature endurance

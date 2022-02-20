@@ -2,7 +2,7 @@
 
 namespace Diggity.Project.Models.Concrete.PlayerShipComponents
 {
-    public class FuelTank : IFuelTank
+    public class FuelTank : AFuelTank
     {
         public FuelTank(short ID, float Capacity, float Fuel, string Name, float Worth, float Weight)
         {
@@ -13,12 +13,5 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
             this.Worth = Worth;
             this.Weight = Weight;
         }
-
-        public short ID { get; set; }
-        public float Capacity { get; set; }
-        public float Fuel { get; set; }
-        public string Name { get; set; }
-        public float Worth { get; set; }
-        public float Weight { get; set; }
     }
 }

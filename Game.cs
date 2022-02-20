@@ -4,6 +4,7 @@ using Diggity.Project.Models.Concrete;
 using Diggity.Project.Models.Concrete.Blocks;
 using Diggity.Project.Models.Concrete.PlayerShipComponents;
 using Diggity.Project.Models.Concrete.StaticRepositories;
+using Diggity.Project.Models.Enums;
 using Diggity.Project.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -61,10 +62,10 @@ namespace Diggity
                 Drill = _items[2].type as Drill,
                 Engine = null,
                 FuelTank = null,
-                Hull = null,
+                Hull = _items[1].type as Hull,
                 Inventory = null,
                 Thruster = null,
-                Velocity = new Vector2(0, 0),
+                Direction = new Vector2(0, 0),
                 Coordinates = new Vector2((float)Math.Floor(_blocksWide / 2.0d), (float)Math.Floor(_blocksHigh / 2.0d))
             };
 
@@ -124,15 +125,30 @@ namespace Diggity
                 nextBlock = new Vector2(location.X + 1, location.Y);
             }
 
-            if (GetWorldBlock(nextBlock.X, nextBlock.Y).Value.Block.Ethereal || _world.WorldTrails.ContainsKey(nextBlock))
-            {
-                MoveScreen(direction.X, direction.Y);
-            }
-            else
-            {
-                DealDamageToBlock(nextBlock.X, nextBlock.Y);
-            }
+            _world.Player.Direction = direction;
+            
+            _world.Player.Mining = false;
 
+            if (direction != new Vector2(0, 0))
+            {
+                var block = GetWorldBlock(nextBlock.X, nextBlock.Y).Value.Block;
+
+                if (block.Ethereal || _world.WorldTrails.ContainsKey(nextBlock))
+                {
+                    MoveScreen(direction.X, direction.Y);
+                }
+                else
+                {
+                    _world.Player.Mining = true;
+
+                    DealDamageToBlock(nextBlock.X, nextBlock.Y);
+
+                    if (block.Ethereal || _world.WorldTrails.ContainsKey(nextBlock))
+                    {
+                        MoveScreen(direction.X, direction.Y);
+                    }
+                }
+            }
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
@@ -168,6 +184,7 @@ namespace Diggity
             var first = _world.WorldRender.OrderBy(x => x.Key.X).OrderBy(x => x.Key.Y).FirstOrDefault();
             _spriteBatch.DrawString(font, $"Offset: X: {first.Value.X}, Y: {first.Value.Y}", new Vector2(5, 5), Color.Black);
         }
+
         private void DrawRenderedWorld()
         {
             foreach (var pair in _world.WorldRender)
@@ -182,10 +199,9 @@ namespace Diggity
                 {
                     _spriteBatch.Draw(GetWorldBlock(pair.Value.X, pair.Value.Y).Value.Texture, location, Color.White);
                 }
-
-                _spriteBatch.DrawString(Content.Load<SpriteFont>("Fonts/text"), $"{GetWorldBlock(pair.Value.X, pair.Value.Y).Value.Block.Ethereal}", location, Color.Black);
             }
         }
+        
         private void DrawPlayerShip()
         {
             Vector2 PlayerPosition = new Vector2(
@@ -193,7 +209,34 @@ namespace Diggity
                 GetCenterScreenCoordinates().Y
             );
 
-            _spriteBatch.Draw(_items[1].Texture, PlayerPosition, Color.White);
+            var orientation = _world.Player.Orientation;
+            var mining = _world.Player.Mining;
+            var drill = _items[_world.Player.Drill.ID];
+            var hull  = _items[_world.Player.Hull.ID];
+
+            if (orientation.Equals(EOrientation.Base))
+            {
+                _spriteBatch.Draw(hull.Textures[EOrientation.Base], PlayerPosition, Color.White);
+            }
+            else
+            {
+                if (mining)
+                {
+                    var drillPositionX = GetCenterScreenCoordinates().X + (_world.Player.Direction.X * _pixels);
+                    var drillPositionY = GetCenterScreenCoordinates().Y + (_world.Player.Direction.Y * _pixels);
+                    
+                    _spriteBatch.Draw(drill.Textures[orientation], new Vector2(drillPositionX, drillPositionY), Color.White);
+
+                    _spriteBatch.Draw(hull.Textures[orientation], PlayerPosition, Color.White);
+                }
+                else
+                {
+                    // draw thrusters
+                    _spriteBatch.Draw(hull.Textures[EOrientation.Base], PlayerPosition, Color.White);
+                }
+            }
+
+            
         }
 
         private Vector2 GetCenterScreenCoordinates()
@@ -223,7 +266,7 @@ namespace Diggity
             _world.WorldTrails.Add(location, true);
         }
 
-        private KeyValuePair<int, (string Name, Texture2D Texture, IBlock Block)> GetWorldBlock(float x, float y)
+        private KeyValuePair<int, (string Name, Texture2D Texture, Block Block)> GetWorldBlock(float x, float y)
         {
             var simplex = (float)SimplexNoise.Singleton.Noise01(x, y) * 10.0f;
 
@@ -238,12 +281,19 @@ namespace Diggity
 
                 if (simplex >= info.OccurrenceSpan.X && simplex <= info.OccurrenceSpan.Y)
                 {
-                    var copy = new KeyValuePair<int, (string Name, Texture2D Texture, IBlock Block)>(block.Key, (block.Value.Name, block.Value.Texture, ObjectExtensions.CreateDeepCopy<Block>(block.Value.block as Block)));
-                    return block;
+                    return new KeyValuePair<int, (string Name, Texture2D Texture, Block Block)>
+                        (
+                            block.Key, 
+                            (
+                                block.Value.Name, 
+                                block.Value.Texture, 
+                                new Block(block.Value.block)
+                            )
+                        );
                 }
             }
 
-            return new KeyValuePair<int, (string Name, Texture2D Texture, IBlock Block)>(-1, (null, null, null));
+            return new KeyValuePair<int, (string Name, Texture2D Texture, Block Block)>(-1, (null, null, null));
         }
 
         private void MoveScreen(float x, float y)

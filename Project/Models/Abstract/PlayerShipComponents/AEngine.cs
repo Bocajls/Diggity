@@ -2,10 +2,10 @@
 
 namespace Diggity.Project.Models.Abstract.PlayerShipComponents
 {
-    public interface IEngine : IType
+    public abstract class AEngine : AType
     {
         public float ActiveFuelConsumption { get; set; } // When Mining
         public float Speed { get; set; } // Maximum drill spinning speed
-        public IThermalPlating Plating { get; set; } // Heat dissipating plating. Maybe only thermalplating on hull (?)
+        public AThermalPlating Plating { get; set; } // Heat dissipating plating. Maybe only thermalplating on hull (?)
     }
 }

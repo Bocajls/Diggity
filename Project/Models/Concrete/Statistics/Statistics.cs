@@ -2,7 +2,7 @@
 
 namespace Diggity.Project.Models.Concrete.Statistics
 {
-    public class Statistics : IStatistics
+    public class Statistics : AStatistics
     {
         public Statistics(int TotalSecondsPlayed, int TotalBlocksMined, double TotalCashAccumulated)
         {
@@ -10,9 +10,5 @@ namespace Diggity.Project.Models.Concrete.Statistics
             this.TotalBlocksMined = TotalBlocksMined;
             this.TotalCashAccumulated = TotalCashAccumulated;
         }
-
-        public int TotalSecondsPlayed { get; set; }
-        public int TotalBlocksMined { get; set; }
-        public double TotalCashAccumulated { get; set; }
     }
 }

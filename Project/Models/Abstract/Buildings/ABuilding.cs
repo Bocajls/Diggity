@@ -7,7 +7,7 @@ namespace Diggity.Project.Models.Abstract.Buildings
     {
         // Abstract since every building with have special methods.
 
-        public ABuilding(short ID, string Name, Vector2 GlobalCoordinate, IGrid StorageGrid, IGrid ActiveGrid, ISize Size)
+        public ABuilding(short ID, string Name, Vector2 GlobalCoordinate, AGrid StorageGrid, AGrid ActiveGrid, ASize Size)
         {
             this.ID = ID;
             this.Name = Name;
@@ -20,8 +20,8 @@ namespace Diggity.Project.Models.Abstract.Buildings
         public short ID { get; set; }
         public string Name { get; set; }
         public Vector2 GlobalCoordinate { get; set; }
-        public IGrid StorageGrid { get; set; } // Example in Smeltery the grid that contains ingots after having being processed.
-        public IGrid ActiveGrid { get; set; } // Example in Smeltery the grid that contains ores that are currently being processed.
-        public ISize Size { get; set; }
+        public AGrid StorageGrid { get; set; } // Example in Smeltery the grid that contains ingots after having being processed.
+        public AGrid ActiveGrid { get; set; } // Example in Smeltery the grid that contains ores that are currently being processed.
+        public ASize Size { get; set; }
     }
 }

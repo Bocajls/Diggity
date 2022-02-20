@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 namespace Diggity.Project.Models.Concrete
 {
-    public class World : IWorld
+    public class World : AWorld
     {
-        public World(IPlayer Player, IList<IBuilding> Buildings, int BlocksWide, int BlocksHigh, Dictionary<Vector2, Vector2> WorldRender, Dictionary<Vector2, bool> WorldTrails)
+        public World(APlayer Player, List<ABuilding> Buildings, int BlocksWide, int BlocksHigh, Dictionary<Vector2, Vector2> WorldRender, Dictionary<Vector2, bool> WorldTrails)
         {
             this.Player = Player;
             this.Buildings = Buildings;
@@ -15,12 +15,5 @@ namespace Diggity.Project.Models.Concrete
             this.WorldRender = WorldRender;
             this.WorldTrails = WorldTrails;
         }
-
-        public IPlayer Player { get; set; }
-        public IList<IBuilding> Buildings { get; set; }
-        public int BlocksWide { get; set; }
-        public int BlocksHigh { get; set; }
-        public Dictionary<Vector2, Vector2> WorldRender { get; set;} // byte[,] WorldBlocks { get; set; }
-        public Dictionary<Vector2, bool> WorldTrails { get; set; }
     }
 }

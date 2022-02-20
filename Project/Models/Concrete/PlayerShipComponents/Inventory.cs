@@ -1,11 +1,11 @@
 ﻿using Diggity.Project.Models.Abstract.PlayerShipComponents;
-using Diggity.Project.Models.Abstract.Grids;
+using Diggity.Project.Models.Concrete.Grids;
 
 namespace Diggity.Project.Models.Concrete.PlayerShipComponents
 {
-    public class Inventory : IInventory
+    public class Inventory : AInventory
     {
-        public Inventory(short ID, IGrid Items, float SizeLimit, string Name, float Worth, float Weight)
+        public Inventory(short ID, Grid Items, float SizeLimit, string Name, float Worth, float Weight)
         {
             this.ID = ID;
             this.Items = Items;
@@ -14,12 +14,5 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
             this.Worth = Worth;
             this.Weight = Weight;
         }
-
-        public short ID { get; set; }
-        public IGrid Items { get; set; }
-        public float SizeLimit { get; set; }
-        public string Name { get; set; }
-        public float Worth { get; set; }
-        public float Weight { get; set; }
     }
 }

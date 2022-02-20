@@ -3,16 +3,21 @@ using System;
 
 namespace Diggity.Project.Models.Concrete.Blocks
 {
-    public class Block : IBlock
+    public class Block : ABlock
     {
         public event EventHandler OnBlockDestroyed;
 
-        public Block()
+        public Block(Block original)
         {
-
+            this.Ethereal = original.Ethereal;
+            this.Hardness = original.Hardness;
+            this.MaximumHealth = original.MaximumHealth;
+            this.CurrentHealth = original.CurrentHealth;
+            this.Worth = original.Worth;
+            this.Info = original.Info;
         }
 
-        public Block(bool Ethereal = false, float Hardness = 0, float Health = 0, double Worth = 0, IBlockInfo Info = null)
+        public Block(bool Ethereal = false, float Hardness = 0, float Health = 0, double Worth = 0, BlockInfo Info = null)
         {
             this.Ethereal = Ethereal;
             this.Hardness = Hardness;
@@ -21,14 +26,6 @@ namespace Diggity.Project.Models.Concrete.Blocks
             this.Worth = Worth;
             this.Info = Info;
         }
-
-        public bool Destroyed => !Ethereal && CurrentHealth <= 0; 
-        public bool Ethereal { get; set; }
-        public float Hardness { get; set; }
-        public float MaximumHealth { get; set; }
-        public float CurrentHealth { get; set; }
-        public double Worth { get; set; }
-        public IBlockInfo Info { get; set; }
 
         public void TakeDamage(float damage)
         {

@@ -2,10 +2,10 @@
 
 namespace Diggity.Project.Models.Abstract.PlayerShipComponents
 {
-    public interface IHull : IType
+    public abstract class AHull : AType
     {
         public float Health { get; set; }
         public float Durability { get; set; } // Maximum health of the ship
-        public IThermalPlating Plating { get; set; } // Heat dissipating plating
+        public AThermalPlating Plating { get; set; } // Heat dissipating plating
     }
 }

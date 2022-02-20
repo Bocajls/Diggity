@@ -8,8 +8,8 @@ namespace Diggity.Project.Models.Abstract.Buildings
         public short ID { get; set; }
         public Vector2 GlobalCoordinate { get; set; }
         public string Name { get; set; }
-        public IGrid StorageGrid { get; set; }
-        public IGrid ActiveGrid { get; set; }
-        public ISize Size { get; set; } // Size in pixels
+        public AGrid StorageGrid { get; set; }
+        public AGrid ActiveGrid { get; set; }
+        public ASize Size { get; set; } // Size in pixels
     }
 }

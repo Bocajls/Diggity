@@ -1,6 +1,6 @@
 ﻿namespace Diggity.Project.Models.Abstract
 {
-    public interface ISize
+    public abstract class ASize
     {
         public float Width { get; set; }
         public float Height { get; set; }

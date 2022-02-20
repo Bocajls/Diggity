@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace Diggity.Project.Models.Abstract
 {
-    public interface IWorld
+    public abstract class AWorld
     {
-        public IPlayer Player { get; set; }
-        public IList<IBuilding> Buildings { get; set; }
+        public APlayer Player { get; set; }
+        public List<ABuilding> Buildings { get; set; }
         public int BlocksWide { get; set; }
         public int BlocksHigh { get; set; }
 

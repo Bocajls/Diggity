@@ -2,8 +2,8 @@
 
 namespace Diggity.Project.Models.Abstract.Buttons
 {
-    public interface IButtons
+    public abstract class AButtons
     {
-        public IList<IButton> ButtonCollection { get; set; }
+        public List<AButton> ButtonCollection { get; set; }
     }
 }

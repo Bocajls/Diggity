@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Diggity.Project.Models.Concrete.Grids
 {
-    public class Grid : IGrid
+    public class Grid : AGrid
     {
         public Grid(int ID, Vector2 InternalCoordinate, GridBox[,] InternalGrid)
         {
@@ -11,9 +11,5 @@ namespace Diggity.Project.Models.Concrete.Grids
             this.InternalCoordinate = InternalCoordinate;
             this.InternalGrid = InternalGrid;
         }
-
-        public int ID { get; set; }
-        public Vector2 InternalCoordinate { get; set; }
-        public IGridBox[,] InternalGrid { get; set; }
     }
 }

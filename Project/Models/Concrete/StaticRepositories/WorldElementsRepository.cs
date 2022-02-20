@@ -1,5 +1,4 @@
-﻿using Diggity.Project.Models.Abstract.Blocks;
-using Diggity.Project.Models.Concrete.Blocks;
+﻿using Diggity.Project.Models.Concrete.Blocks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Diggity.Project.Concrete.StaticRepositories
 {
-    public class WorldElementsRepository : Dictionary<int, (string Name, Texture2D Texture, IBlock block)>
+    public class WorldElementsRepository : Dictionary<int, (string Name, Texture2D Texture, Block block)>
     {
         public WorldElementsRepository(ContentManager manager)
         {
@@ -25,11 +24,11 @@ namespace Diggity.Project.Concrete.StaticRepositories
             Add(0, ("Air", manager.Load<Texture2D>("Graphics/World/Blocks/Air"), AirBlock));
 
             var GrassBlockInfo = new BlockInfo(MinimumDepth: 11, MaximumDepth: 11, OccurrenceSpan: new Vector2(0f, 100f));
-            var GrassBlock = new Block(Ethereal: false, Hardness: 1, Health: 5, Worth: 0, Info: GrassBlockInfo);
+            var GrassBlock = new Block(Ethereal: false, Hardness: 0, Health: 50, Worth: 0, Info: GrassBlockInfo);
             Add(1, ("Grass", manager.Load<Texture2D>("Graphics/World/Blocks/Grass"), GrassBlock));
 
             var DirtBlockInfo = new BlockInfo(MinimumDepth: 12, MaximumDepth: 500, OccurrenceSpan: new Vector2(0f, 100f));
-            var DirtBlock = new Block(Ethereal: false, Hardness: 1, Health: 10, Worth: 0, Info: DirtBlockInfo);
+            var DirtBlock = new Block(Ethereal: false, Hardness: 0, Health: 10, Worth: 0, Info: DirtBlockInfo);
             Add(2, ("Dirt", manager.Load<Texture2D>("Graphics/World/Blocks/Dirt"), DirtBlock));
 
             var GravelBlockInfo = new BlockInfo(MinimumDepth: 15, MaximumDepth: 150, OccurrenceSpan: new Vector2(0f, 3f));

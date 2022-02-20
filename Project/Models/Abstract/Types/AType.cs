@@ -4,6 +4,11 @@
     {
         // Abstract since every game item type will have special methods and attributes.
 
+        public AType()
+        {
+
+        }
+
         public AType(short ID, string Name, float Worth, float Weight)
         {
             this.ID = ID;
