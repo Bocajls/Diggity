@@ -1,4 +1,5 @@
 ﻿using Diggity.Project.Models.Abstract.PlayerShipComponents;
+using Newtonsoft.Json;
 
 namespace Diggity.Project.Models.Concrete.PlayerShipComponents
 {
@@ -16,6 +17,7 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
             this.Worth = original.Worth;
         }
 
+        [JsonConstructor]
         public Thruster(short ID, float Speed, float Power, ThermalPlating Plating, string Name, float ActiveFuelConsumption, float Weight, float Worth)
         {
             this.ID = ID;

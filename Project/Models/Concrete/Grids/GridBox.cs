@@ -1,11 +1,13 @@
 ﻿using Diggity.Project.Models.Abstract.Grids;
 using Diggity.Project.Models.Abstract.Types;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Diggity.Project.Models.Concrete.Grids
 {
     public class GridBox : AGridBox
     {
+        [JsonConstructor]
         public GridBox(int ID, List<AType> Item)
         {
             this.ID = ID;

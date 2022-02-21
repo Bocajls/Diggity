@@ -1,4 +1,5 @@
 ﻿using Diggity.Project.Models.Abstract.Blocks;
+using Newtonsoft.Json;
 using System;
 
 namespace Diggity.Project.Models.Concrete.Blocks
@@ -7,8 +8,14 @@ namespace Diggity.Project.Models.Concrete.Blocks
     {
         public event EventHandler OnBlockDestroyed;
 
+        public Block()
+        {
+
+        }
+
         public Block(Block original)
         {
+            this.ID = original.ID;
             this.Ethereal = original.Ethereal;
             this.Hardness = original.Hardness;
             this.MaximumHealth = original.MaximumHealth;
@@ -17,8 +24,10 @@ namespace Diggity.Project.Models.Concrete.Blocks
             this.Info = original.Info;
         }
 
-        public Block(bool Ethereal = false, float Hardness = 0, float Health = 0, double Worth = 0, BlockInfo Info = null)
+        [JsonConstructor]
+        public Block(short ID, bool Ethereal = false, float Hardness = 0, float Health = 0, float Worth = 0, BlockInfo Info = null)
         {
+            this.ID = ID;
             this.Ethereal = Ethereal;
             this.Hardness = Hardness;
             this.MaximumHealth = Health;

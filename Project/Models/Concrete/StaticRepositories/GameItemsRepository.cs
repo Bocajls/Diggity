@@ -17,7 +17,12 @@ namespace Diggity.Project.Models.Concrete.StaticRepositories
         private void InitializeCollection(ContentManager manager)
         {
             var ScrapPlating = new ThermalPlating(ID: 0, 0, 100, 2, "Scrap Thermal Plating", 5, 5);
-            //Add(0, ("ScrapThermalPlating", manager.Load<Texture2D>("Graphics/Player/ThermalPlatings/ScrapThermalPlating/ScrapThermalPlating"), ScrapPlating));
+
+            var ScrapThermalPlatingTextures = new Dictionary<EOrientation, Texture2D>
+            {
+                { EOrientation.Base, manager.Load<Texture2D>("Graphics/Player/ThermalPlatings/ScrapThermalPlating/ScrapThermalPlating") },
+            };
+            Add(0, ("ScrapThermalPlating", ScrapThermalPlatingTextures, ScrapPlating));
 
 
             var ScrapHullTextures = new Dictionary<EOrientation, Texture2D>
@@ -41,9 +46,25 @@ namespace Diggity.Project.Models.Concrete.StaticRepositories
             Add(2, ("ScrapDrill", ScrapDrillTextures, new Drill(ID: 2, Hardness: 0.1f, Plating: new ThermalPlating(ScrapPlating), Name: "Scrap Drill")));
 
 
-            //Add(3, ("ScrapEngine", manager.Load<Texture2D>("Graphics/Player/Engines/ScrapEngine/ScrapEngine"), new Engine(ID: 3, Speed: 2, Plating: new ThermalPlating(ScrapPlating), Name: "Scrap Engine", ActiveFuelConsumption: 1, Worth: 5, Weight: 5)));
-            //Add(4, ("ScrapFuelTank", manager.Load<Texture2D>("Graphics/Player/FuelTanks/ScrapFuelTank/ScrapFuelTank"), new FuelTank(ID: 4, Capacity: 200, Fuel: 200, Name: "Scrap Fuel Tank", Worth: 5, Weight: 5)));
-            //Add(5, ("ScrapThruster", manager.Load<Texture2D>("Graphics/Player/Thrusters/ScrapThruster/ScrapThruster"), new Thruster(ID: 5, Speed: 2, Power: 50, Plating: new ThermalPlating(ScrapPlating), Name: "Scrap Thruster", ActiveFuelConsumption: 2, Weight: 5, Worth: 5)));
+            var ScrapEngineTextures = new Dictionary<EOrientation, Texture2D>
+            {
+                { EOrientation.Base, manager.Load<Texture2D>("Graphics/Player/Engines/ScrapEngine/ScrapEngine") }
+            };
+            Add(3, ("ScrapEngine", ScrapEngineTextures, new Engine(ID: 3, Speed: 2, Plating: new ThermalPlating(ScrapPlating), Name: "Scrap Engine", ActiveFuelConsumption: 1, Worth: 5, Weight: 5)));
+
+
+            var ScrapFuelTankTextures = new Dictionary<EOrientation, Texture2D>
+            {
+                { EOrientation.Base, manager.Load<Texture2D>("Graphics/Player/FuelTanks/ScrapFuelTank/ScrapFuelTank") }
+            };
+            Add(4, ("ScrapFuelTank", ScrapFuelTankTextures, new FuelTank(ID: 4, Capacity: 200, Fuel: 200, Name: "Scrap Fuel Tank", Worth: 5, Weight: 5)));
+
+
+            var ScrapThrusterTextures = new Dictionary<EOrientation, Texture2D>
+            {
+                { EOrientation.Base, manager.Load<Texture2D>("Graphics/Player/Thrusters/ScrapThruster/ScrapThruster") }
+            };
+            Add(5, ("ScrapThruster", ScrapThrusterTextures, new Thruster(ID: 5, Speed: 2, Power: 50, Plating: new ThermalPlating(ScrapPlating), Name: "Scrap Thruster", ActiveFuelConsumption: 2, Weight: 5, Worth: 5)));
 
         }
     }

@@ -1,6 +1,8 @@
 ﻿using Diggity.Project.Concrete.StaticRepositories;
+using Diggity.Project.Context;
 using Diggity.Project.Models.Concrete;
 using Diggity.Project.Models.Concrete.Blocks;
+using Diggity.Project.Models.Concrete.Grids;
 using Diggity.Project.Models.Concrete.PlayerShipComponents;
 using Diggity.Project.Models.Concrete.StaticRepositories;
 using Diggity.Project.Models.Enums;
@@ -28,6 +30,8 @@ namespace Diggity
 
         private static World _world;
 
+        private ContextHandler _context;
+
         // private ItemSpriteRepository _items;
 
         public Game()
@@ -41,7 +45,7 @@ namespace Diggity
         {
             _blocks = new WorldElementsRepository(Content);
             _items = new GameItemsRepository(Content);
-            _interactions = new WorldInteractionsRepository();
+            _context = new ContextHandler();
 
             var _blocksWide = (GraphicsDevice.DisplayMode.Width - (GraphicsDevice.DisplayMode.Width % _pixels)) / _pixels;
             var _blocksHigh = (GraphicsDevice.DisplayMode.Height - (GraphicsDevice.DisplayMode.Height % _pixels)) / _pixels;
@@ -55,20 +59,36 @@ namespace Diggity
             _graphics.IsFullScreen = false;
             _graphics.ApplyChanges();
 
-            var player = new Player()
+            _interactions = new WorldInteractionsRepository();
+
+            _world = _context.LoadWorld();
+
+            if(_world is null)
             {
-                Cash = 0,
-                Drill = new Drill(_items[2].type as Drill),
-                Engine = null,
-                FuelTank = null,
-                Hull = new Hull(_items[1].type as Hull),
-                Inventory = null,
-                Thruster = null,
-                Direction = new Vector2(0, 0),
+                _world = CreateNewWorld(_blocksWide, _blocksHigh);
+            }
+
+            // TODO: Add your initialization logic here
+
+            base.Initialize();
+        }
+
+        private World CreateNewWorld(int _blocksWide, int _blocksHigh)
+        {
+            var player = new Player(
+                Engine: new Engine(_items[3].type as Engine),
+                Hull: new Hull(_items[1].type as Hull),
+                Drill: new Drill(_items[2].type as Drill),
+                Inventory: new Inventory(ID: 100, new Grid(ID: 99, new Vector2(0, 0), new GridBox[3, 3]), SizeLimit: 576, Name: "Starter Inventory", Worth: 10, Weight: 0),
+                Thruster: new Thruster(_items[5].type as Thruster),
+                FuelTank: new FuelTank(_items[4].type as FuelTank)
+            )
+            {
                 Coordinates = new Vector2((float)Math.Floor(_blocksWide / 2.0d), (float)Math.Floor(_blocksHigh / 2.0d))
             };
 
             var createdWorldRender = new Dictionary<Vector2, Vector2>();
+            
             for (var x = 0; x <= _blocksWide; x++)
             {
                 for (var y = 0; y <= _blocksHigh; y++)
@@ -77,7 +97,7 @@ namespace Diggity
                 }
             }
 
-            _world = new World(
+            return new World(
                 Player: player,                                  // ContextHandler.LoadPlayer();
                 Buildings: null,                                 // ContextHandler.LoadBuildings();
                 BlocksWide: _blocksWide,                         // Calculated
@@ -85,12 +105,6 @@ namespace Diggity
                 WorldRender: createdWorldRender,                 // Dynamically updated
                 WorldTrails: new Dictionary<Vector2, bool>()     // ContextHandler.LoadWorldTrails();
             );
-
-
-
-            // TODO: Add your initialization logic here
-
-            base.Initialize();
         }
 
         protected override void LoadContent()
@@ -154,12 +168,10 @@ namespace Diggity
                 }
             }
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (state.IsKeyDown(Keys.LeftControl) && state.IsKeyDown(Keys.S))
             {
-                Exit();
+                _context.SaveWorld(_world);
             }
-
-            // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
@@ -167,8 +179,6 @@ namespace Diggity
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
             
             _spriteBatch.Begin();
 
@@ -239,8 +249,6 @@ namespace Diggity
                     _spriteBatch.Draw(hull.Textures[EOrientation.Base], PlayerPosition, Color.White);
                 }
             }
-
-            
         }
 
         private Vector2 GetCenterScreenCoordinates()

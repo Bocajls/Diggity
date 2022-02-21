@@ -1,4 +1,5 @@
 ﻿using Diggity.Project.Models.Abstract.PlayerShipComponents;
+using Newtonsoft.Json;
 
 namespace Diggity.Project.Models.Concrete.PlayerShipComponents
 {
@@ -14,6 +15,7 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
             this.Weight = original.Weight;
         }
 
+        [JsonConstructor]
         public Drill(short ID, float Hardness, ThermalPlating Plating, string Name)
         {
             this.ID = ID;

@@ -1,12 +1,15 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.IO.Compression;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
 namespace Diggity.Project.Utilities
 {
-    public static class ObjectExtensions
+    public static class Extensions
     {
         public static T CopyObject<T>(this object objSource)
         {
@@ -33,6 +36,34 @@ namespace Diggity.Project.Utilities
             jsonOptions.Converters.Add(new JsonStringEnumConverter());
             var json = JsonSerializer.Serialize(o, jsonOptions);
             return JsonSerializer.Deserialize(json, o.GetType(), jsonOptions);
+        }
+
+        public static string Compress(string s)
+        {
+            var bytes = Encoding.Unicode.GetBytes(s);
+            using (var msi = new MemoryStream(bytes))
+            using (var mso = new MemoryStream())
+            {
+                using (var gs = new GZipStream(mso, CompressionMode.Compress))
+                {
+                    msi.CopyTo(gs);
+                }
+                return Convert.ToBase64String(mso.ToArray());
+            }
+        }
+
+        public static string Decompress(string s)
+        {
+            var bytes = Convert.FromBase64String(s);
+            using (var msi = new MemoryStream(bytes))
+            using (var mso = new MemoryStream())
+            {
+                using (var gs = new GZipStream(msi, CompressionMode.Decompress))
+                {
+                    gs.CopyTo(mso);
+                }
+                return Encoding.Unicode.GetString(mso.ToArray());
+            }
         }
     }
 }
