@@ -20,17 +20,15 @@ namespace Diggity
     {
         private static readonly string GameTitle = "Diggity";
         private static readonly string GameVersion = "V0.02";
+        private static readonly int _pixels = 64; 
 
-        private const int _pixels = 64; 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private WorldInteractionsRepository _interactions;
         private WorldElementsRepository _blocks;
         private GameItemsRepository _items;
-
-        private static World _world;
-
         private ContextHandler _context;
+        private World _world;
 
         // private ItemSpriteRepository _items;
 
@@ -147,24 +145,18 @@ namespace Diggity
             
             _world.Player.Mining = false;
 
-            if (direction != new Vector2(0, 0))
+            if (!direction.Equals(new Vector2(0, 0)))
             {
                 var block = GetWorldBlock(nextBlock.X, nextBlock.Y).Value.Block;
 
-                if (block.Ethereal || _world.WorldTrails.ContainsKey(nextBlock))
-                {
-                    MoveScreen(direction.X, direction.Y);
-                }
-                else
+                if(Obstructed(block, nextBlock))
                 {
                     _world.Player.Mining = true;
-
                     DealDamageToBlock(nextBlock.X, nextBlock.Y);
-
-                    if (block.Ethereal || _world.WorldTrails.ContainsKey(nextBlock))
-                    {
-                        MoveScreen(direction.X, direction.Y);
-                    }
+                }
+                if (!Obstructed(block, nextBlock))
+                {
+                    MoveScreen(direction.X, direction.Y);
                 }
             }
 
@@ -308,6 +300,15 @@ namespace Diggity
             return new KeyValuePair<int, (string Name, Texture2D Texture, Block Block)>(-1, (null, null, null));
         }
 
+        private bool Obstructed(Block block, Vector2 nextBlock)
+        {
+            if (block.Ethereal || _world.WorldTrails.ContainsKey(nextBlock))
+            {
+                return false;
+            }
+            return true;
+        }
+        
         private void MoveScreen(float x, float y)
         {
             var updated = new Dictionary<Vector2, Vector2>();
