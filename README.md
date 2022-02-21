@@ -9,30 +9,19 @@ Install MSSQL 2019 on Docker with highest compatibility level (140-150), cost th
 [OK] Install MonoGame for solution
 Implement EntityFramework with LINQ
 Implement GameEngine
-Draw graphics (64x64 to 256x256)
-Figure out seed algoritm
 
 REMEMBER TO HAVE A LOT OF SMALL TEST PROJECTS
 DOESNT NEED TO BE PERFECT FIRST TIME!!
-
 
 FIGURE OUT SCHEDULER!
 	Lots of events that need scheduleing, for example smelting ores, player mining, player movement, statistics, thermal dissipation, crafting.
 	Automatic saving!
 
-
-CONSIDER
-	A 'World' of bytes is NOT really needed.
-	The world will be generated through SimplexNoise,
-	instead have (example) a 40 times 23 blocks 'screen' area,
-	only containing what needs to be rendered (besides buildings, those are static)
-
-
-FIGURE OUT .JSON-FORMATTING
-	Lots of interfaces and some abstract classes!
-	These need to be saved, maybe too many interfaces .. ?!
-		SEED, TRAILS, GRIDS, INVENTORY, PLAYER, STATISTICS
-
+Figure out ship velocity AFTER TIMER (hard)
+Figure out inventory window GRID and COMPONENTS (hard)
+Figure out how to make items draggable (hard)
+Implement sounds (intermediate)
+Implement breaking texture (easy)
 
 Other ideas
 	Crafting Recipes (
