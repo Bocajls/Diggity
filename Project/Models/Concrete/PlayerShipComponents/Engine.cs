@@ -8,7 +8,6 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
         public Engine(Engine original)
         {
             this.ID = original.ID;
-            this.Speed = original.Speed;
             this.Plating = original.Plating;
             this.Name = original.Name;
             this.ActiveFuelConsumption = original.ActiveFuelConsumption;
@@ -20,7 +19,6 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
         public Engine(short ID, float Speed, ThermalPlating Plating, string Name, float ActiveFuelConsumption, float Worth, float Weight)
         {
             this.ID = ID;
-            this.Speed = Speed;
             this.Plating = Plating;
             this.Name = Name;
             this.ActiveFuelConsumption = ActiveFuelConsumption;

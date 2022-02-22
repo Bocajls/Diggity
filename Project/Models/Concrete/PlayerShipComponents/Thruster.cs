@@ -9,6 +9,7 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
         {
             this.ID = original.ID;
             this.Speed = original.Speed;
+            this.Acceleration = original.Acceleration;
             this.Power = original.Power;
             this.Plating = original.Plating;
             this.Name = original.Name;
@@ -18,10 +19,11 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
         }
 
         [JsonConstructor]
-        public Thruster(short ID, float Speed, float Power, ThermalPlating Plating, string Name, float ActiveFuelConsumption, float Weight, float Worth)
+        public Thruster(short ID, float Speed, float Acceleration, float Power, ThermalPlating Plating, string Name, float ActiveFuelConsumption, float Weight, float Worth)
         {
             this.ID = ID;
             this.Speed = Speed;
+            this.Acceleration = Acceleration;
             this.Power = Power;
             this.Plating = Plating;
             this.Name = Name;

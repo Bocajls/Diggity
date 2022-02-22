@@ -8,6 +8,11 @@ namespace Diggity.Project.Models.Abstract
     {
         public Vector2 Coordinates { get; set; } = new Vector2(0, 0);
         public Vector2 Direction { get; set; } = new Vector2(0, 0);
+        public float XOffset { get; set; }
+        public float YOffset { get; set; }
+        public float XVelocity { get; set; }
+        public float YVelocity { get; set; }
+
         public EOrientation Orientation
         {
             get
