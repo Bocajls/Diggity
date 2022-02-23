@@ -9,6 +9,7 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
         {
             this.ID = original.ID;
             this.Hardness = original.Hardness;
+            this.Damage = original.Damage;
             this.Plating = original.Plating;
             this.Name = original.Name;
             this.Worth = original.Worth;
@@ -16,10 +17,11 @@ namespace Diggity.Project.Models.Concrete.PlayerShipComponents
         }
 
         [JsonConstructor]
-        public Drill(short ID, float Hardness, ThermalPlating Plating, string Name)
+        public Drill(short ID, float Hardness, float Damage, ThermalPlating Plating, string Name)
         {
             this.ID = ID;
             this.Hardness = Hardness;
+            this.Damage = Damage;
             this.Plating = Plating;
             this.Name = Name;
             this.Worth = Worth;

@@ -43,7 +43,7 @@ namespace Diggity.Project.Models.Concrete.Blocks
                 return;
             }
 
-            this.CurrentHealth -= CalculatePenetrationDamage(damage);
+            this.CurrentHealth -= damage;//CalculatePenetrationDamage(damage);
 
             if (CurrentHealth <= 0)
             {
@@ -53,10 +53,12 @@ namespace Diggity.Project.Models.Concrete.Blocks
             }
         }
 
+        /*
         public float CalculatePenetrationDamage(float drillDamage)
         {
             return (drillDamage - Hardness) <= 0 ? 0 : (drillDamage - Hardness);
         }
+        */
 
         // Etheral blocks do not block player ship from moving on over them.
         public bool BlockIsEthereal() => Ethereal;

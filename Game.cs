@@ -348,7 +348,10 @@ namespace Diggity
                 interactions.Add(vector, block);
             }
 
-            interactions[vector].TakeDamage(world.Player.Drill.Hardness);
+            if(interactions[vector].Hardness <= world.Player.Drill.Hardness)
+            {
+                interactions[vector].TakeDamage(world.Player.Drill.Damage);
+            }
         }
 
         private void OnBlockDestroyed(Block block, EventArgs e, Vector2 location)
@@ -371,15 +374,18 @@ namespace Diggity
 
                 if (simplex >= info.OccurrenceSpan.X && simplex <= info.OccurrenceSpan.Y)
                 {
-                    return new KeyValuePair<int, (string Name, Texture2D Texture, Block Block)>
+                    var keyValuePair = new KeyValuePair<int, (string Name, Texture2D Texture, Block Block)>
                         (
-                            block.Key,
-                            (
-                                block.Value.Name,
-                                block.Value.Texture,
-                                new Block(block.Value.block)
-                            )
+                            block.Key,(block.Value.Name, block.Value.Texture, new Block(block.Value.block))
                         );
+
+                    if(block.Key == 2 && x > 0) // Dirt gets compressed slowly
+                    {
+                        keyValuePair.Value.Block.Hardness      += 0.01f * x;
+                        keyValuePair.Value.Block.CurrentHealth += 0.01f * x;
+                        keyValuePair.Value.Block.MaximumHealth += 0.01f * x;
+                    }
+                    return keyValuePair;
                 }
             }
 

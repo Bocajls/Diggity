@@ -43,7 +43,7 @@ namespace Diggity.Project.Models.Concrete.StaticRepositories
                 { EOrientation.Right, manager.Load<Texture2D>("Graphics/Player/Drills/ScrapDrill/ScrapDrillRight") },
                 { EOrientation.Down, manager.Load<Texture2D>("Graphics/Player/Drills/ScrapDrill/ScrapDrillDown") }
             };
-            Add(2, ("ScrapDrill", ScrapDrillTextures, new Drill(ID: 2, Hardness: 0.1f, Plating: new ThermalPlating(ScrapPlating), Name: "Scrap Drill")));
+            Add(2, ("ScrapDrill", ScrapDrillTextures, new Drill(ID: 2, Hardness: 5f, Damage: 0.1f, Plating: new ThermalPlating(ScrapPlating), Name: "Scrap Drill")));
 
 
             var ScrapEngineTextures = new Dictionary<EOrientation, Texture2D>
@@ -63,8 +63,8 @@ namespace Diggity.Project.Models.Concrete.StaticRepositories
             var ScrapThrusterTextures = new Dictionary<EOrientation, Texture2D>
             {
                 { EOrientation.Base, manager.Load<Texture2D>("Graphics/Player/Thrusters/ScrapThruster/ScrapThruster") }
-            };
-            Add(5, ("ScrapThruster", ScrapThrusterTextures, new Thruster(ID: 5, Speed: 200, Acceleration: 1.2f, Power: 50, Plating: new ThermalPlating(ScrapPlating), Name: "Scrap Thruster", ActiveFuelConsumption: 2, Weight: 5, Worth: 5)));
+            };                      
+            Add(5, ("ScrapThruster", ScrapThrusterTextures, new Thruster(ID: 5, Speed: 8, Acceleration: 0.5f, Power: 50, Plating: new ThermalPlating(ScrapPlating), Name: "Scrap Thruster", ActiveFuelConsumption: 2, Weight: 5, Worth: 5)));
 
         }
     }
