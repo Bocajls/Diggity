@@ -237,6 +237,10 @@ namespace Diggity
                 _world.Player.ResetOffset();
                 _world.Player.ResetVelocity();
                 DealDamageToBlock(nextBlockVector.X, nextBlockVector.Y);
+                if(!Obstructed(nextBlock, nextBlockVector))
+                {
+                    MoveScreen(direction.X, direction.Y);
+                }
             }
 
 
