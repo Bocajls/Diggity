@@ -22,28 +22,28 @@ namespace Diggity
         private static readonly string GameVersion = "V0.02";
         private static readonly int _pixels = 64; 
 
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
-        private WorldInteractionsRepository _interactions;
-        private WorldElementsRepository _blocks;
-        private GameItemsRepository _items;
-        private ContextHandler _context;
-        private World _world;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private WorldInteractionsRepository interactions;
+        private WorldElementsRepository blocks;
+        private GameItemsRepository items;
+        private ContextHandler context;
+        private World world;
 
         // private ItemSpriteRepository _items;
 
         public Game()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
 
         protected override void Initialize()
         {
-            _blocks = new WorldElementsRepository(Content);
-            _items = new GameItemsRepository(Content);
-            _context = new ContextHandler();
+            blocks = new WorldElementsRepository(Content);
+            items = new GameItemsRepository(Content);
+            context = new ContextHandler();
 
             var _blocksWide = (GraphicsDevice.DisplayMode.Width - (GraphicsDevice.DisplayMode.Width % _pixels)) / _pixels;
             var _blocksHigh = (GraphicsDevice.DisplayMode.Height - (GraphicsDevice.DisplayMode.Height % _pixels)) / _pixels;
@@ -52,18 +52,18 @@ namespace Diggity
             _blocksHigh -= _blocksHigh % 2;
 
             Window.Title = $"{GameTitle} {GameVersion}";
-            _graphics.PreferredBackBufferWidth = _blocksWide * _pixels;
-            _graphics.PreferredBackBufferHeight = _blocksHigh * _pixels;
-            _graphics.IsFullScreen = false;
-            _graphics.ApplyChanges();
+            graphics.PreferredBackBufferWidth = _blocksWide * _pixels;
+            graphics.PreferredBackBufferHeight = _blocksHigh * _pixels;
+            graphics.IsFullScreen = false;
+            graphics.ApplyChanges();
 
-            _interactions = new WorldInteractionsRepository();
+            interactions = new WorldInteractionsRepository();
 
-            _world = _context.LoadWorld();
+            world = context.LoadWorld();
 
-            if(_world is null)
+            if(world is null)
             {
-                _world = CreateNewWorld(_blocksWide, _blocksHigh);
+                world = CreateNewWorld(_blocksWide, _blocksHigh);
             }
 
             // TODO: Add your initialization logic here
@@ -74,12 +74,12 @@ namespace Diggity
         private World CreateNewWorld(int _blocksWide, int _blocksHigh)
         {
             var player = new Player(
-                Engine: new Engine(_items[3].type as Engine),
-                Hull: new Hull(_items[1].type as Hull),
-                Drill: new Drill(_items[2].type as Drill),
+                Engine: new Engine(items[3].type as Engine),
+                Hull: new Hull(items[1].type as Hull),
+                Drill: new Drill(items[2].type as Drill),
                 Inventory: new Inventory(ID: 100, new Grid(ID: 99, new Vector2(0, 0), new GridBox[3, 3]), SizeLimit: 576, Name: "Starter Inventory", Worth: 10, Weight: 0),
-                Thruster: new Thruster(_items[5].type as Thruster),
-                FuelTank: new FuelTank(_items[4].type as FuelTank)
+                Thruster: new Thruster(items[5].type as Thruster),
+                FuelTank: new FuelTank(items[4].type as FuelTank)
             )
             {
                 Coordinates = new Vector2((float)Math.Floor(_blocksWide / 2.0d), (float)Math.Floor(_blocksHigh / 2.0d))
@@ -107,14 +107,14 @@ namespace Diggity
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
         protected override void Update(GameTime gameTime)
         {
             KeyboardState state = Keyboard.GetState();
 
-            var location = _world.WorldRender[new Vector2(_world.Player.Coordinates.X, _world.Player.Coordinates.Y)];
+            var location = world.WorldRender[new Vector2(world.Player.Coordinates.X, world.Player.Coordinates.Y)];
 
             Vector2 direction = new Vector2(0, 0);
             if (state.IsKeyDown(Keys.Up))
@@ -133,23 +133,23 @@ namespace Diggity
             {
                 direction = new Vector2(1, direction.Y);
             }
-            _world.Player.Direction = direction;
+            world.Player.Direction = direction;
 
             Vector2 nextBlockVector = new Vector2(location.X + direction.X, location.Y + direction.Y);
             Block nextBlock         = GetWorldBlock(nextBlockVector.X, nextBlockVector.Y).Value.Block;
 
-            _world.Player.UpdateVelocity(direction);
-            _world.Player.UpdateOffset();
+            world.Player.UpdateVelocity(direction);
+            world.Player.UpdateOffset();
 
             float halfSize = _pixels / 2.0f;
             if(!Obstructed(nextBlock, nextBlockVector))
             {
                 // Right
-                if (_world.Player.XOffset > halfSize)
+                if (world.Player.XOffset > halfSize)
                 {
-                    float xmoves = (float)Math.Floor(_world.Player.XOffset / halfSize);
-                    var offset = -1 * _world.Player.XOffset % halfSize + halfSize;
-                    _world.Player.XOffset = -1 * offset + _world.Player.XVelocity;
+                    float xmoves = (float)Math.Floor(world.Player.XOffset / halfSize);
+                    var offset = -1 * world.Player.XOffset % halfSize + halfSize;
+                    world.Player.XOffset = -1 * offset + world.Player.XVelocity;
 
                     var counter = 0;
                     while (++counter < xmoves)
@@ -166,12 +166,12 @@ namespace Diggity
 
                 }
                 // Left
-                else if (_world.Player.XOffset < -1 * halfSize)
+                else if (world.Player.XOffset < -1 * halfSize)
                 {
-                    var absolute = Math.Abs((float)_world.Player.XOffset);
+                    var absolute = Math.Abs((float)world.Player.XOffset);
                     float xmoves = (float)Math.Floor(absolute / halfSize);
-                    var offset = 1 * _world.Player.XOffset % halfSize;
-                    _world.Player.XOffset = +1 * offset + halfSize + _world.Player.XVelocity;
+                    var offset = 1 * world.Player.XOffset % halfSize;
+                    world.Player.XOffset = +1 * offset + halfSize + world.Player.XVelocity;
 
                     var counter = 0;
                     while (++counter < xmoves)
@@ -187,11 +187,11 @@ namespace Diggity
                     MoveScreen(direction.X * counter, direction.Y);
                 }
                 // Down 
-                else if (_world.Player.YOffset > halfSize)
+                else if (world.Player.YOffset > halfSize)
                 {
-                    float ymoves = (float)Math.Floor(_world.Player.YOffset / halfSize);
-                    var offset = -1 * _world.Player.YOffset % halfSize + halfSize;
-                    _world.Player.YOffset = -1 * offset + _world.Player.YVelocity;
+                    float ymoves = (float)Math.Floor(world.Player.YOffset / halfSize);
+                    var offset = -1 * world.Player.YOffset % halfSize + halfSize;
+                    world.Player.YOffset = -1 * offset + world.Player.YVelocity;
 
                     var counter = 0;
                     while (++counter < ymoves)
@@ -207,12 +207,12 @@ namespace Diggity
                     MoveScreen(direction.X, direction.Y * counter);
                 }
                 // Up 
-                else if (_world.Player.YOffset < -1 * halfSize)
+                else if (world.Player.YOffset < -1 * halfSize)
                 {
-                    var absolute = Math.Abs((float)_world.Player.YOffset);
+                    var absolute = Math.Abs((float)world.Player.YOffset);
                     float ymoves = (float)Math.Floor(absolute / halfSize);
-                    var offset = 1 * _world.Player.YOffset % halfSize;
-                    _world.Player.YOffset = +1 * offset + halfSize + _world.Player.YVelocity;
+                    var offset = 1 * world.Player.YOffset % halfSize;
+                    world.Player.YOffset = +1 * offset + halfSize + world.Player.YVelocity;
 
                     var counter = 0;
                     while (++counter < ymoves)
@@ -230,14 +230,14 @@ namespace Diggity
                 }
             }
 
-            _world.Player.Mining = false;
+            world.Player.Mining = false;
             if (Obstructed(nextBlock, nextBlockVector))
             {
-                _world.Player.Mining = true;
-                _world.Player.ResetOffset();
-                _world.Player.ResetVelocity();
+                world.Player.Mining = true;
+                world.Player.ResetOffset();
+                //world.Player.ResetVelocity();
                 DealDamageToBlock(nextBlockVector.X, nextBlockVector.Y);
-                if(!Obstructed(nextBlock, nextBlockVector))
+                if(!Obstructed(nextBlock, nextBlockVector) && world.Player.MaximumActiveVelocity >= halfSize)
                 {
                     MoveScreen(direction.X, direction.Y);
                 }
@@ -245,7 +245,7 @@ namespace Diggity
 
             if (state.IsKeyDown(Keys.LeftControl) && state.IsKeyDown(Keys.S))
             {
-                _context.SaveWorld(_world);
+                context.SaveWorld(world);
             }
 
             base.Update(gameTime);
@@ -255,14 +255,14 @@ namespace Diggity
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             
-            _spriteBatch.Begin();
+            spriteBatch.Begin();
 
             DrawRenderedWorld();
             //DrawRenderedBuildings();
             DrawPlayerShip();
             DrawStatistics();
 
-            _spriteBatch.End();
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
@@ -270,26 +270,26 @@ namespace Diggity
         private void DrawStatistics()
         {
             var font = Content.Load<SpriteFont>("Fonts/text");
-            var first = _world.WorldRender.OrderBy(x => x.Key.X).OrderBy(x => x.Key.Y).FirstOrDefault();
-            _spriteBatch.DrawString(font, $"Offset: X: {first.Value.X}, Y: {first.Value.Y}", new Vector2(5, 5), Color.Black);
+            var first = world.WorldRender.OrderBy(x => x.Key.X).OrderBy(x => x.Key.Y).FirstOrDefault();
+            spriteBatch.DrawString(font, $"Offset: X: {first.Value.X}, Y: {first.Value.Y}", new Vector2(5, 5), Color.Black);
         }
 
         private void DrawRenderedWorld()
         {
-            foreach (var pair in _world.WorldRender)
+            foreach (var pair in world.WorldRender)
             {
-                var XOffset = _world.Player.XOffset;
-                var YOffset = _world.Player.YOffset;
+                var XOffset = world.Player.XOffset;
+                var YOffset = world.Player.YOffset;
 
                 var location = new Vector2((pair.Key.X * _pixels) - (XOffset), (pair.Key.Y * _pixels) - (YOffset));
 
-                if (_world.WorldTrails.ContainsKey(pair.Value))
+                if (world.WorldTrails.ContainsKey(pair.Value))
                 {
-                    _spriteBatch.Draw(_blocks.Where(x => x.Key == -1).FirstOrDefault().Value.Texture, location, Color.White);
+                    spriteBatch.Draw(blocks.Where(x => x.Key == -1).FirstOrDefault().Value.Texture, location, Color.White);
                 }
                 else
                 {
-                    _spriteBatch.Draw(GetWorldBlock(pair.Value.X, pair.Value.Y).Value.Texture, location, Color.White);
+                    spriteBatch.Draw(GetWorldBlock(pair.Value.X, pair.Value.Y).Value.Texture, location, Color.White);
                 }
             }
         }
@@ -301,30 +301,30 @@ namespace Diggity
                 GetCenterScreenCoordinates().Y
             );
 
-            var orientation = _world.Player.Orientation;
-            var mining = _world.Player.Mining;
-            var drill = _items[_world.Player.Drill.ID];
-            var hull  = _items[_world.Player.Hull.ID];
+            var orientation = world.Player.Orientation;
+            var mining = world.Player.Mining;
+            var drill = items[world.Player.Drill.ID];
+            var hull  = items[world.Player.Hull.ID];
 
             if (orientation.Equals(EOrientation.Base))
             {
-                _spriteBatch.Draw(hull.Textures[EOrientation.Base], PlayerPosition, Color.White);
+                spriteBatch.Draw(hull.Textures[EOrientation.Base], PlayerPosition, Color.White);
             }
             else
             {
                 if (mining)
                 {
-                    var drillPositionX = GetCenterScreenCoordinates().X + (_world.Player.Direction.X * _pixels);
-                    var drillPositionY = GetCenterScreenCoordinates().Y + (_world.Player.Direction.Y * _pixels);
+                    var drillPositionX = GetCenterScreenCoordinates().X + (world.Player.Direction.X * _pixels);
+                    var drillPositionY = GetCenterScreenCoordinates().Y + (world.Player.Direction.Y * _pixels);
                     
-                    _spriteBatch.Draw(drill.Textures[orientation], new Vector2(drillPositionX, drillPositionY), Color.White);
+                    spriteBatch.Draw(drill.Textures[orientation], new Vector2(drillPositionX, drillPositionY), Color.White);
 
-                    _spriteBatch.Draw(hull.Textures[orientation], PlayerPosition, Color.White);
+                    spriteBatch.Draw(hull.Textures[orientation], PlayerPosition, Color.White);
                 }
                 else
                 {
                     // draw thrusters
-                    _spriteBatch.Draw(hull.Textures[EOrientation.Base], PlayerPosition, Color.White);
+                    spriteBatch.Draw(hull.Textures[EOrientation.Base], PlayerPosition, Color.White);
                 }
             }
         }
@@ -332,8 +332,8 @@ namespace Diggity
         private Vector2 GetCenterScreenCoordinates()
         {
             return new Vector2(
-                (float)(_graphics.PreferredBackBufferWidth / 2.0),
-                (float)(_graphics.PreferredBackBufferHeight / 2.0)
+                (float)(graphics.PreferredBackBufferWidth / 2.0),
+                (float)(graphics.PreferredBackBufferHeight / 2.0)
             );
         }
 
@@ -342,25 +342,25 @@ namespace Diggity
             var vector = new Vector2(x, y);
             var block = GetWorldBlock(x, y).Value.Block as Block;
 
-            if (_interactions.ContainsKey(vector) == false)
+            if (interactions.ContainsKey(vector) == false)
             {
                 block.OnBlockDestroyed += (sender, e) => OnBlockDestroyed(sender as Block, e, vector);
-                _interactions.Add(vector, block);
+                interactions.Add(vector, block);
             }
 
-            _interactions[vector].TakeDamage(_world.Player.Drill.Hardness);
+            interactions[vector].TakeDamage(world.Player.Drill.Hardness);
         }
 
         private void OnBlockDestroyed(Block block, EventArgs e, Vector2 location)
         {
-            _world.WorldTrails.Add(location, true);
+            world.WorldTrails.Add(location, true);
         }
 
         private KeyValuePair<int, (string Name, Texture2D Texture, Block Block)> GetWorldBlock(float x, float y)
         {
             var simplex = (float)SimplexNoise.Singleton.Noise01(x, y) * 100.0f;
 
-            foreach (var block in _blocks.OrderByDescending(x => x.Key))
+            foreach (var block in blocks.OrderByDescending(x => x.Key))
             {
                 var info = block.Value.block.Info;
 
@@ -388,7 +388,7 @@ namespace Diggity
 
         private bool Obstructed(Block block, Vector2 nextBlock)
         {
-            if (block.Ethereal || _world.WorldTrails.ContainsKey(nextBlock))
+            if (block.Ethereal || world.WorldTrails.ContainsKey(nextBlock))
             {
                 return false;
             }
@@ -399,12 +399,12 @@ namespace Diggity
         {
             var updated = new Dictionary<Vector2, Vector2>();
 
-            foreach(var block in _world.WorldRender)
+            foreach(var block in world.WorldRender)
             {
                 updated.Add(new Vector2(block.Key.X, block.Key.Y), new Vector2(block.Value.X + x, block.Value.Y + y));
             }
 
-            _world.WorldRender = updated;
+            world.WorldRender = updated;
         }
     }
 }

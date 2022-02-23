@@ -37,6 +37,7 @@ namespace Diggity.Project.Models.Abstract
         public AFuelTank FuelTank { get; set; }
         public float Weight { get; } = 0.0f;
 
+        public float MaximumActiveVelocity => Math.Abs(XVelocity) > Math.Abs(YVelocity) ? Math.Abs(XVelocity) : Math.Abs(YVelocity);
         public void SetOffset(float XO, float YO)
         {
             XOffset = XO;
