@@ -12,7 +12,7 @@ namespace Diggity.Project.Models.Concrete.Blocks
         }
 
         [JsonConstructor]
-        public BlockInfo(int MinimumDepth = -1, int MaximumDepth = -1, Vector2 OccurrenceSpan = new Vector2())
+        public BlockInfo(int MinimumDepth = -int.MaxValue, int MaximumDepth = int.MaxValue, Vector2 OccurrenceSpan = new Vector2())
         {
             this.MinimumDepth = MinimumDepth;
             this.MaximumDepth = MaximumDepth;

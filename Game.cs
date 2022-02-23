@@ -243,7 +243,6 @@ namespace Diggity
                 }
             }
 
-
             if (state.IsKeyDown(Keys.LeftControl) && state.IsKeyDown(Keys.S))
             {
                 _context.SaveWorld(_world);
@@ -359,9 +358,9 @@ namespace Diggity
 
         private KeyValuePair<int, (string Name, Texture2D Texture, Block Block)> GetWorldBlock(float x, float y)
         {
-            var simplex = (float)SimplexNoise.Singleton.Noise01(x, y) * 10.0f;
+            var simplex = (float)SimplexNoise.Singleton.Noise01(x, y) * 100.0f;
 
-            foreach (var block in _blocks.OrderByDescending(x => x.Value.block.Info.MinimumDepth))
+            foreach (var block in _blocks.OrderByDescending(x => x.Key))
             {
                 var info = block.Value.block.Info;
 
@@ -374,10 +373,10 @@ namespace Diggity
                 {
                     return new KeyValuePair<int, (string Name, Texture2D Texture, Block Block)>
                         (
-                            block.Key, 
+                            block.Key,
                             (
-                                block.Value.Name, 
-                                block.Value.Texture, 
+                                block.Value.Name,
+                                block.Value.Texture,
                                 new Block(block.Value.block)
                             )
                         );
