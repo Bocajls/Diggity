@@ -112,53 +112,133 @@ namespace Diggity
 
         protected override void Update(GameTime gameTime)
         {
-            MouseState mouseState = Mouse.GetState();
             KeyboardState state = Keyboard.GetState();
 
             var location = _world.WorldRender[new Vector2(_world.Player.Coordinates.X, _world.Player.Coordinates.Y)];
 
-            Vector2 direction = new Vector2(0,0);
-            Vector2 nextBlock = new Vector2(0, 0);
-
+            Vector2 direction = new Vector2(0, 0);
             if (state.IsKeyDown(Keys.Up))
             {
-                direction = new Vector2(0, -1);
-                nextBlock = new Vector2(location.X, location.Y - 1);
+                direction = new Vector2(direction.X, -1);
             }
             else if (state.IsKeyDown(Keys.Down))
             {
-                direction = new Vector2(0, 1);
-                nextBlock = new Vector2(location.X, location.Y + 1);
+                direction = new Vector2(direction.X, 1);
             }
             else if (state.IsKeyDown(Keys.Left))
             {
-                direction = new Vector2(-1, 0);
-                nextBlock = new Vector2(location.X - 1, location.Y);
+                direction = new Vector2(-1, direction.Y);
             }
             else if (state.IsKeyDown(Keys.Right))
             {
-                direction = new Vector2(1, 0);
-                nextBlock = new Vector2(location.X + 1, location.Y);
+                direction = new Vector2(1, direction.Y);
             }
-
             _world.Player.Direction = direction;
-            
-            _world.Player.Mining = false;
 
-            if (!direction.Equals(new Vector2(0, 0)))
+            Vector2 nextBlockVector = new Vector2(location.X + direction.X, location.Y + direction.Y);
+            Block nextBlock         = GetWorldBlock(nextBlockVector.X, nextBlockVector.Y).Value.Block;
+
+            _world.Player.UpdateVelocity(direction);
+            _world.Player.UpdateOffset();
+
+            float halfSize = _pixels / 2.0f;
+            if(!Obstructed(nextBlock, nextBlockVector))
             {
-                var block = GetWorldBlock(nextBlock.X, nextBlock.Y).Value.Block;
+                // Right
+                if (_world.Player.XOffset > halfSize)
+                {
+                    float xmoves = (float)Math.Floor(_world.Player.XOffset / halfSize);
+                    var offset = -1 * _world.Player.XOffset % halfSize + halfSize;
+                    _world.Player.XOffset = -1 * offset + _world.Player.XVelocity;
 
-                if(Obstructed(block, nextBlock))
-                {
-                    _world.Player.Mining = true;
-                    DealDamageToBlock(nextBlock.X, nextBlock.Y);
+                    var counter = 0;
+                    while (++counter < xmoves)
+                    {
+                        nextBlock = GetWorldBlock(location.X + counter, location.Y).Value.Block;
+                        nextBlockVector = new Vector2(location.X + counter, location.Y);
+                        if (Obstructed(nextBlock, nextBlockVector))
+                        {
+                            break;
+                        }
+                    }
+
+                    MoveScreen(direction.X * counter, direction.Y);
+
                 }
-                if (!Obstructed(block, nextBlock))
+                // Left
+                else if (_world.Player.XOffset < -1 * halfSize)
                 {
-                    MoveScreen(direction.X, direction.Y);
+                    var absolute = Math.Abs((float)_world.Player.XOffset);
+                    float xmoves = (float)Math.Floor(absolute / halfSize);
+                    var offset = 1 * _world.Player.XOffset % halfSize;
+                    _world.Player.XOffset = +1 * offset + halfSize + _world.Player.XVelocity;
+
+                    var counter = 0;
+                    while (++counter < xmoves)
+                    {
+                        nextBlock = GetWorldBlock(location.X - counter, location.Y).Value.Block;
+                        nextBlockVector = new Vector2(location.X - counter, location.Y);
+                        if (Obstructed(nextBlock, nextBlockVector))
+                        {
+                            break;
+                        }
+                    }
+
+                    MoveScreen(direction.X * counter, direction.Y);
+                }
+                // Down 
+                else if (_world.Player.YOffset > halfSize)
+                {
+                    float ymoves = (float)Math.Floor(_world.Player.YOffset / halfSize);
+                    var offset = -1 * _world.Player.YOffset % halfSize + halfSize;
+                    _world.Player.YOffset = -1 * offset + _world.Player.YVelocity;
+
+                    var counter = 0;
+                    while (++counter < ymoves)
+                    {
+                        nextBlock = GetWorldBlock(location.X, location.Y + counter).Value.Block;
+                        nextBlockVector = new Vector2(location.X, location.Y + counter);
+                        if (Obstructed(nextBlock, nextBlockVector))
+                        {
+                            break;
+                        }
+                    }
+
+                    MoveScreen(direction.X, direction.Y * counter);
+                }
+                // Up 
+                else if (_world.Player.YOffset < -1 * halfSize)
+                {
+                    var absolute = Math.Abs((float)_world.Player.YOffset);
+                    float ymoves = (float)Math.Floor(absolute / halfSize);
+                    var offset = 1 * _world.Player.YOffset % halfSize;
+                    _world.Player.YOffset = +1 * offset + halfSize + _world.Player.YVelocity;
+
+                    var counter = 0;
+                    while (++counter < ymoves)
+                    {
+                        nextBlock = GetWorldBlock(location.X, location.Y - counter).Value.Block;
+                        nextBlockVector = new Vector2(location.X, location.Y - counter);
+                        if (Obstructed(nextBlock, nextBlockVector))
+                        {
+                            break;
+                        }
+
+                    }
+
+                    MoveScreen(direction.X, direction.Y * counter);
                 }
             }
+
+            _world.Player.Mining = false;
+            if (Obstructed(nextBlock, nextBlockVector))
+            {
+                _world.Player.Mining = true;
+                _world.Player.ResetOffset();
+                _world.Player.ResetVelocity();
+                DealDamageToBlock(nextBlockVector.X, nextBlockVector.Y);
+            }
+
 
             if (state.IsKeyDown(Keys.LeftControl) && state.IsKeyDown(Keys.S))
             {
@@ -195,7 +275,10 @@ namespace Diggity
         {
             foreach (var pair in _world.WorldRender)
             {
-                var location = new Vector2(pair.Key.X * _pixels, pair.Key.Y * _pixels);
+                var XOffset = _world.Player.XOffset;
+                var YOffset = _world.Player.YOffset;
+
+                var location = new Vector2((pair.Key.X * _pixels) - (XOffset), (pair.Key.Y * _pixels) - (YOffset));
 
                 if (_world.WorldTrails.ContainsKey(pair.Value))
                 {

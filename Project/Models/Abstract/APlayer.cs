@@ -1,6 +1,7 @@
 ﻿using Diggity.Project.Models.Abstract.PlayerShipComponents;
 using Diggity.Project.Models.Enums;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace Diggity.Project.Models.Abstract
 {
@@ -35,5 +36,130 @@ namespace Diggity.Project.Models.Abstract
         public AThruster Thruster { get; set; }
         public AFuelTank FuelTank { get; set; }
         public float Weight { get; } = 0.0f;
+
+        public void SetOffset(float XO, float YO)
+        {
+            XOffset = XO;
+            YOffset = YO;
+        }
+        public void UpdateOffset()
+        {
+            XOffset += XVelocity;
+            YOffset += YVelocity;
+        }
+        
+        public bool WithinBlockPositiveXBoundariesAfterMoving(float XBoundary)
+        {
+            return (XVelocity + XOffset < XBoundary * 1.0f);
+        }
+
+        public bool WithinBlockNegativeYBoundariesAfterMoving(float YBboundary)
+        {
+            return (YVelocity + YOffset > YBboundary * -1.0f);
+        }
+
+        public bool WithinBlockPositiveYBoundariesAfterMoving(float YBboundary)
+        {
+            return (YVelocity + YOffset < YBboundary * 1.0f);
+        }
+
+        public bool WithinBlockNegativeXBoundariesAfterMoving(float XBoundary)
+        {
+            return (XVelocity + XOffset > XBoundary * -1.0f);
+        }
+        
+        public void UpdateVelocity(Vector2 direction)
+        {
+            if (direction.X == 0)
+            {
+                XVelocity = 0.0f;
+            }
+
+            if (direction.Y == 0)
+            {
+                YVelocity = 0.0f;
+            }
+
+            if (direction.Y == 1)
+            {
+                if (YVelocity < 0)
+                {
+                    YVelocity = 0.0f;
+                }
+
+                YVelocity += Thruster.Acceleration;
+
+                if (YVelocity > Thruster.Speed)
+                {
+                    YVelocity = Thruster.Speed;
+                }
+
+                return;
+            }
+
+            if (direction.X == 1)
+            {
+                if (XVelocity < 0)
+                {
+                    XVelocity = 0.0f;
+                }
+
+                XVelocity += Thruster.Acceleration;
+
+                if (XVelocity > Thruster.Speed)
+                {
+                    XVelocity = Thruster.Speed;
+                }
+
+                return;
+            }
+
+            if (direction.Y == -1)
+            {
+                if (YVelocity > 0)
+                {
+                    YVelocity = 0.0f;
+                }
+
+                YVelocity -= Thruster.Acceleration;
+
+                if (Math.Abs(YVelocity) > Thruster.Speed)
+                {
+                    YVelocity = Thruster.Speed * -1;
+                }
+
+                return;
+            }
+
+            if (direction.X == -1)
+            {
+                if (XVelocity > 0)
+                {
+                    XVelocity = 0.0f;
+                }
+
+                XVelocity -= Thruster.Acceleration;
+
+                if (Math.Abs(XVelocity) > Thruster.Speed)
+                {
+                    XVelocity = Thruster.Speed * -1;
+                }
+
+                return;
+            }
+
+        }
+
+        public void ResetOffset()
+        {
+            XOffset = 0.0f;
+            YOffset = 0.0f;
+        }
+
+        public void ResetVelocity()
+        {
+            XVelocity = 0.0f;
+            YVelocity = 0.0f;
+        }
     }
 }
